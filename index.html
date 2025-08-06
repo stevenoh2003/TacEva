@@ -177,7 +177,7 @@
 
 <section class="hero is-small">
   <div class="section-container">
-    <h2 style="padding-top: 10px;" class="title is-3">Calibration</h2>
+    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Calibration</h2>
   
     <div class="hero-body">
       <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/calibration.png" alt="VBTS calibration setup diagram">
@@ -197,10 +197,9 @@
     </div>
   </div>
 </section>
-
 <section class="hero is-small">
   <div class="section-container">
-        <h2 style="padding-top: 10px;" class="title is-3">Spatial Resolution</h2>
+    <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Spatial Resolution</h2>
   
     <div class="hero-body">
       <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/spatial_res_7.png" alt="Description">
@@ -216,35 +215,74 @@
       </ul>
       
       <p>These results demonstrate the Gelmini and MagicTac sensors' superior ability to resolve fine spatial details, making them better suited for applications requiring high-resolution tactile feedback.</p>
-    
     </div>
-    <div class="sketchfab-container" style="width: 100%; max-width: 900px; margin: 0 auto; text-align: center;">
-      <div class="sketchfab-embed-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-        <iframe 
-          title="overall v1" 
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-          frameborder="0" 
-          allowfullscreen 
-          mozallowfullscreen="true" 
-          webkitallowfullscreen="true" 
-          allow="autoplay; fullscreen; xr-spatial-tracking" 
-          xr-spatial-tracking 
-          execution-while-out-of-viewport 
-          execution-while-not-rendered 
-          web-share 
-          src="https://sketchfab.com/models/c2f5364ba28c44ed94dbd2674da013a5/embed">
-        </iframe>
+
+    <h3  class="is-3">Grating board CAD models:</h3>
+
+    <!-- Two embeds side by side -->
+    <div class="columns is-mobile" style="margin-top: 2rem;">
+      <div class="column is-half" style="padding: 0 0.5rem;">
+        <div class="sketchfab-embed-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <iframe 
+            title="overall v1" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+            src="https://sketchfab.com/models/c2f5364ba28c44ed94dbd2674da013a5/embed">
+          </iframe>
+        </div>
+        <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+          <!-- Attribution text -->
+        </p>
       </div>
-      <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-        <a href="https://sketchfab.com/3d-models/overall-v1-c2f5364ba28c44ed94dbd2674da013a5?utm_medium=embed&utm_campaign=share-popup&utm_content=c2f5364ba28c44ed94dbd2674da013a5" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">overall v1</a> by <a href="https://sketchfab.com/stevenoh2003?utm_medium=embed&utm_campaign=share-popup&utm_content=c2f5364ba28c44ed94dbd2674da013a5" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">stevenoh2003</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=c2f5364ba28c44ed94dbd2674da013a5" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
-      </p>
+
+      <div class="column is-half" style="padding: 0 0.5rem;">
+        <div class="sketchfab-embed-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <iframe 
+            title="Overall_2" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+            src="https://sketchfab.com/models/54bd7997b5b44d829626bd9672267635/embed">
+          </iframe>
+        </div>
+        <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+          <!-- Attribution text -->
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
+<style>
+  /* Ensure columns take full width */
+  .columns.is-mobile {
+    display: flex;
+    width: 100%;
+  }
+  
+  .column.is-half {
+    flex: 1;
+    min-width: 0; /* Fixes flexbox overflow issues */
+  }
+  
+  /* Remove default Bulma column gaps */
+  .columns.is-mobile > .column {
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+  
+  /* Responsive behavior */
+  @media screen and (max-width: 768px) {
+    .columns.is-mobile {
+      flex-direction: column;
+    }
+    .column.is-half {
+      width: 100%;
+      padding: 0.5rem 0 !important;
+    }
+  }
+</style>
+
 <section class="hero is-small">
   <div class="section-container">
-        <h2 style="padding-top: 10px;" class="title is-3">Sensitivity</h2>
+        <h2 style="margin-top: 50px; text-align: center;" class="title is-3">Sensitivity</h2>
   
 
     <div class="hero-body">
@@ -264,7 +302,7 @@
 
 <section class="hero is-small">
   <div class="section-container">
-        <h2 style="padding-top: 10px;" class="title is-3">Spatial Robustness</h2>
+        <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Spatial Robustness</h2>
   
 
     <div class="hero-body">
@@ -284,7 +322,7 @@
 
 <section class="hero is-small">
   <div class="section-container">
-        <h2 style="padding-top: 10px;" class="title is-3">Lightning Robustness</h2>
+        <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Lightning Robustness</h2>
   
 
     <div class="hero-body">
@@ -337,7 +375,7 @@
 
 <section class="is-small section">
   <div class="section-container">
-      <h2 style="padding-top: 10px;" class="title">Repeatibility</h2>
+      <h2 style="padding-top: 10px; text-align: center;" class="title">Repeatibility</h2>
   
 
     <div class="hero-body">
