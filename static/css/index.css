@@ -8,7 +8,30 @@ body {
     padding-right: 1.5rem !important;
   }
 }
+    /* Add this to your existing CSS */
+  .section-container {
+    width: 80%;
+    max-width: 1200px;
+    /* Optional: set a max-width */
+    margin: 0 auto;
+    padding: 0 20px;
+    /* Add some horizontal padding */
+  }
 
+  @media screen and (max-width: 768px) {
+    .section-container {
+      width: 90%;
+      /* Slightly wider on mobile */
+      padding: 0 15px;
+    }
+  }
+
+  /* For hero sections */
+  .hero.is-small .container,
+  .hero.is-small .hero-body {
+    width: 100%;
+    max-width: 100%;
+  }
 .footer .icon-link {
     font-size: 25px;
     color: #000;
