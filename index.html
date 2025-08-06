@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Academic Project Page</title>
+  <title>TacEval: A Performance Evaluation Framework for Vision-Based Tactile Sensors</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -52,21 +52,21 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">TacEval: A Performance Evaluation Framework for Vision-Based Tactile Sensors</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Author</a><sup>*</sup>,</span>
+                <!-- <span class="author-block">
                   <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
                   <span class="author-block">
                     <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
+                  </span> -->
                   </div>
 
                   <div class="is-size-5 publication-authors">
                     <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
 
                   <div class="column has-text-centered">
@@ -127,13 +127,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
+      <img style="width: 80%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/overall_pipeline.png" alt="Research framework diagram">
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+        We propose a comprehensive framework for evaluating vision-based tactile sensors, systematically comparing performance across spatial resolution, sensitivity, and robustness metrics. In this paper, we test our framework against four VBTS (ViTacTip, MagicTac, GelSight, GelSightWM) and showcase their results.
       </h2>
     </div>
   </div>
@@ -148,8 +144,30 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
+            Vision-based tactile sensors (VBTS) have gained
+            widespread application in robotic tasks, which is attributed to
+            their high spatial resolution and relatively low manufacturing
+            costs. In current research, variations in sensing mechanisms,
+            structural dimensions, and other parameters among different
+            VBTS lead to significant performance disparities. This diversity
+            creates challenges for users to optimize VBTS for specific tasks, as
+            the initial choice and subsequent fine-tuning can be hindered by
+            a lack of standardized metrics. To address this issue, this study
+            proposes Tac-Evaluate, a comprehensive evaluation framework
+            for the quantitative analysis of VBTS performance. We first
+            define a set of performance metrics tailored to typical application
+            scenarios, specifically chosen to represent key quantitative char-
+            acteristics of VBTS. For each metric, we design an experimental
+            pipeline that provides a structured framework for performance
+            quantification. This evaluation approach is then applied to
+            multiple VBTSs based on different sensing principles to conduct
+            performance assessments. The experimental results demonstrate
+            that this framework provides a thorough evaluation of VBTS
+            multifunctionality and offers precise quantitative indicators for
+            each performance dimension. This supports researchers in pre-
+            selecting appropriate VBTS for specific tasks and provides
+            performance-guided insights for optimizing the design of VBTS.
+                    </p>
         </div>
       </div>
     </div>
@@ -157,121 +175,173 @@
 </section>
 <!-- End paper abstract -->
 
-
-<!-- Image carousel -->
 <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
+  <div class="container">
+    <h2 style="padding-top: 10px;" class="title is-3">Calibration</h2>
+  
+
+    <div class="hero-body">
+      <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/calibration.png" alt="Description">
       <h2 class="subtitle has-text-centered">
-        Fourth image description.
+        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
       </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
+      <img style="width: 70%; display: block; margin: 0 auto;" src="static/images/calibration_error_3.png" alt="Description">
 
 
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
 
-
-<!-- Video carousel -->
 <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
+  <div class="container">
+    <h2 style="padding-top: 10px;" class="title is-3">Spatial Resolution</h2>
+  
+    <div class="hero-body">
+      <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/spatial_res_7.png" alt="Description">
+        
+      <p>We evaluated each sensor's ability to distinguish closely spaced contact points by testing their performance across features ranging from 0.25mm to 1.75mm. Using 3D-printed samples and 100 repeated presses per sample (with randomized orientations), we measured classification accuracy at different tolerance thresholds to determine spatial resolution.</p>
+      
+      <p><strong>Key Findings:</strong> All sensors achieved near-perfect accuracy at resolutions above 5mm. At the challenging 0.05mm threshold:</p>
+        
+      <ul style="margin-left: 1.5em; padding-left: 1.5em;">
+        <li><strong>Gelmini series</strong> maintained exceptional performance (99% accuracy)</li>
+        <li><strong>MagicTac</strong> showed similar high-resolution capabilities</li>
+        <li><strong>ViTacTip</strong> accuracy dropped to 80%, indicating limitations in fine discrimination</li>
+      </ul>
+      
+      <p>These results demonstrate the Gelmini and MagicTac sensors' superior ability to resolve fine spatial details, making them better suited for applications requiring high-resolution tactile feedback.</p>
     </div>
   </div>
 </section>
-<!-- End video carousel -->
+
+<section class="hero is-small">
+  <div class="container">
+    <h2 style="padding-top: 10px;" class="title is-3">Sensitivity</h2>
+  
+
+    <div class="hero-body">
+      <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/sensitivity.png" alt="Description">
+      <p>
+        <strong>Sensitivity Analysis:</strong> We define tactile sensor sensitivity as <em>S</em> = Δ<em>z</em>/<em>F</em>, where Δ<em>z</em> is indentation depth and <em>F</em> is applied normal force, measuring how effectively small input changes convert to output signals. To evaluate this, robots performed systematic 0.1 mm increment indentations across sensor surfaces, recording force-displacement data at each grid point (Fig. 4). This generated spatial sensitivity maps revealing local responsiveness variations.
+      </p>
+      
+      <p>
+        <strong>Key Findings:</strong> ViTacTip showed distinct sensitivity patterns, with central regions (~4 mm/N) being half as sensitive as edges, indicating greater edge deformation under equal force. Comparative analysis across four VBTS demonstrated how sensitivity distributions vary by sensor design, with ViTacTip's edge-enhanced sensitivity contrasting with more uniform distributions in other tested sensors.
+      </p>
 
 
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
     </div>
-  </section>
-<!--End paper poster -->
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="container">
+    <h2 style="padding-top: 10px;" class="title is-3">Spatial Robustness</h2>
+  
+
+    <div class="hero-body">
+      <img style="width: 90%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/spatial_robustness.png" alt="Description">
+      <p>
+        <strong>Spatial Robustness Analysis:</strong> We evaluated how consistently sensors perform when contact location varies across their surface, a critical property for real-world applications. Testing four sensors (ViTacTip, MagicTac, Gelmini, GelminiWM), we measured MAE and variability for position (P<sub>xy</sub>, P<sub>z</sub>) and force (F<sub>xy</sub>, F<sub>z</sub>) estimation across radial positions and indentation depths (Fig. 5). ViTacTip showed superior position accuracy (0.5 mm MAE, 0.216 mm STD) due to its spherical cavity design, while Gel-based sensors exhibited higher edge errors from planar optical distortions.
+      </p>
+      
+      <p>
+        <strong>Key Performance Patterns:</strong> Force estimation revealed distinct sensor behaviors - ViTacTip maintained low errors (0.02 N F<sub>z</sub> MAE) across all locations, while other sensors showed significant edge degradation. Depth analysis showed all sensors improve position accuracy with deeper indentations, but force estimation became more challenging at greater depths for Gel-based designs. The results demonstrate how sensor geometry (spherical vs. planar) and marker visibility fundamentally affect spatial robustness, with ViTacTip's design providing more uniform performance across contact locations.
+      </p>
+
+
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="container">
+    <h2 style="padding-top: 10px;" class="title is-3">Lightning Robustness</h2>
+  
+
+    <div class="hero-body">
+      <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/lightning_robustness.png" alt="Description">
+      <div class="lighting-analysis">
+        <div class="text-with-image">
+          <img src="static/images/lightning_robustness_table.png" class="wrapped-image right" alt="Lighting robustness comparison table">
+          
+          <p>
+            <strong>Lighting Robustness Analysis:</strong> We evaluated sensor performance under varying illumination conditions (diffuse, point-source, and mixed lighting at different intensities) using two metrics: sensitivity score (S<sub>c</sub>) and robustness score (R<sub>c</sub>). ViTacTip showed significant sensitivity to lighting changes (MAE increasing 10x under 7x brighter point sources), while MagicTac demonstrated better resistance to diffuse lighting due to its internal grid structure's refraction effects - though its photometric stereo-based system became unreliable when external light interfered with its RGB illumination.
+          </p>
+          
+          <p>
+            <strong>Comparative Performance:</strong> The results reveal complementary strengths - ViTacTip maintains better tangent-force and position robustness, while MagicTac excels in normal-force estimation. For normal position estimation, both sensors performed similarly, with ViTacTip showing slightly better average accuracy. MagicTac's embedded markers in lattice structure caused tracking challenges under variable lighting, while ViTacTip's material properties made it more vulnerable to intensity variations (Fig. 6c).
+          </p>
+        </div>
+      </div>
+      
+      <style>
+        .text-with-image {
+          display: flow-root; /* Contains floats */
+        }
+        
+        .wrapped-image {
+          margin-bottom: 1rem;
+          max-width: 50%; /* Adjust as needed */
+          height: auto;
+        }
+        
+        .wrapped-image.right {
+          float: right;
+          margin-left: 1rem;
+          margin-right: 0;
+        }
+        
+        @media (max-width: 768px) {
+          .wrapped-image {
+            float: none;
+            max-width: 100%;
+            margin: 0 auto 1rem;
+            display: block;
+          }
+        }
+      </style>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-small">
+  <div class="container">
+    <h2 style="padding-top: 10px;" class="title is-3">Repeatibility</h2>
+  
+
+    <div class="hero-body">
+      <img style="width: 100%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/repeatbility_new.png" alt="Description">
+      <!-- <h2 class="subtitle has-text-centered">
+        We evaluated the repeatability of three tactile sensors—ViTacTip, MagicTac, and Gelmini—measuring standard deviation (STD) of force components (F<sub>x</sub>, F<sub>y</sub>, F<sub>z</sub>) and positional components (P<sub>x</sub>, P<sub>y</sub>, P<sub>z</sub>) across multiple trials at various indentation depths. Figure Xa compares sensor structures and dimensions. Figure Xb shows STDs of all six components, while Figure Xc plots repeatability (STD) versus depth, with positional STDs (P<sub>x</sub>, P<sub>y</sub>, P<sub>z</sub>, left y-axis in mm) and force STDs (F<sub>x</sub>, F<sub>y</sub>, F<sub>z</sub>, right y-axis in N) for each sensor: ViTacTip (left), MagicTac (center), and Gelmini (right).
+      </h2> -->
+      <p><strong>Repeatability Analysis:</strong> We evaluated how consistently each sensor responded to repeated stimuli by conducting 100 compression cycles (in 0.1mm steps to maximum depth) across their surfaces. Using our ResNet-based model, we analyzed standard deviation (STD) of both force (F<sub>xy</sub>, F<sub>z</sub>) and position (P<sub>xy</sub>, P<sub>z</sub>) predictions.</p>
+
+    
+  
+    
+      <p><strong>Force Results:</strong> ViTacTip demonstrated superior repeatability with uniformly low STD values across all depths. Gelmini showed moderate performance with slightly elevated STD near its center, while MagicTac exhibited higher force variability.</p>
+    
+      <p><strong>Position Results:</strong> ViTacTip maintained excellent positional repeatability except during initial shallow indentations. MagicTac showed moderate P<sub>xy</sub> variability, while Gemini displayed the highest inconsistency - particularly at edges due to geometric constraints. The varying step counts reflect each sensor's durability limits under compression.</p>
+    </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--BibTex citation -->
