@@ -127,7 +127,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img style="width: 80%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/overall_pipeline.png" alt="Research framework diagram">
+      <img style="width: 80%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/system_pipeline.png" alt="Research framework diagram">
       <h2 class="subtitle has-text-centered">
         We propose a comprehensive framework for evaluating vision-based tactile sensors, systematically comparing performance across spatial resolution, sensitivity, and robustness metrics. In this paper, we test and showcase our framework against four representative VBTS (ViTacTip, MagicTac, GelSight, GelSightWM).
       </h2>
@@ -177,17 +177,23 @@
 
 <section class="hero is-small">
   <div class="section-container">
-        <h2 style="padding-top: 10px;" class="title is-3">Calibration</h2>
+    <h2 style="padding-top: 10px;" class="title is-3">Calibration</h2>
   
-
     <div class="hero-body">
-      <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/calibration.png" alt="Description">
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-      <img style="width: 70%; display: block; margin: 0 auto;" src="static/images/calibration_error_3.png" alt="Description">
+      <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/calibration.png" alt="VBTS calibration setup diagram">
+      
+      <p><strong>Two-Stage Calibration:</strong> Our framework implements sequential calibration procedures: (1) <em>Surface-geometry reconstruction</em> to map the 3D sensor surface using a robotic arm and force-sensitive spherical indenter (10mm radius), and (2) <em>Force-localization calibration</em> establishing optical-output-to-force mappings through systematic probing.</p>
 
+      <img style="width: 70%; display: block; margin: 2rem auto;" src="static/images/calibration_error_3.png" alt="Calibration error results">
 
+      <p><strong>Methodology:</strong> Using a 6-axis F/T sensor and UFactory 850 robotic arm, we:</p>
+      <ul style="margin-left: 1.5em; padding-left: 1.5em;">
+        <li>Reconstruct surface geometry via 0.1mm-step contact probing (0.02N threshold)</li>
+        <li>Generate randomized normal/shear force stimuli (x-y displacements + depth variations)</li>
+        <li>Train ResNet-18 models on synchronized camera-force data (70:20:10 train-val-test split)</li>
+      </ul>
+
+      <p><strong>Key Advantage:</strong> This approach creates precise reference geometries and force-response models while accounting for both normal and shear force interactions across the entire sensing surface.</p>
     </div>
   </div>
 </section>
@@ -329,9 +335,9 @@
 </section>
 
 
-<section class="hero is-small">
+<section class="is-small section">
   <div class="section-container">
-        <h2 style="padding-top: 10px;" class="title is-3">Repeatibility</h2>
+      <h2 style="padding-top: 10px;" class="title">Repeatibility</h2>
   
 
     <div class="hero-body">
@@ -341,8 +347,6 @@
       </h2> -->
       <p><strong>Repeatability Analysis:</strong> We evaluated how consistently each sensor responded to repeated stimuli by conducting 100 compression cycles (in 0.1mm steps to maximum depth) across their surfaces. Using our ResNet-based model, we analyzed standard deviation (STD) of both force (F<sub>xy</sub>, F<sub>z</sub>) and position (P<sub>xy</sub>, P<sub>z</sub>) predictions.</p>
 
-    
-  
     
       <p><strong>Force Results:</strong> ViTacTip demonstrated superior repeatability with uniformly low STD values across all depths. Gelmini showed moderate performance with slightly elevated STD near its center, while MagicTac exhibited higher force variability.</p>
     
