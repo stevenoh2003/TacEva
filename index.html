@@ -167,13 +167,12 @@
             each performance dimension. This supports researchers in pre-
             selecting appropriate VBTS for specific tasks and provides
             performance-guided insights for optimizing the design of VBTS.
-                    </p>
+            </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End paper abstract -->
 
 
 <section class="hero is-small">
@@ -186,6 +185,19 @@
     </div>
   </div>
 </section>
+
+<section class="hero is-small">
+  <div class="section-container">
+    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Existing VBTS' properties</h2>
+    <p>Existing VBTS research offer various evaluations of their design and sensing properties. However, there exist no universal benchmarking procedure; furthermore, no method captures both inherent design properties and sensing performance in one single pipeline. </p>
+    <div class="hero-body">
+      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/existing_vbts.png" alt="VBTS calibration setup diagram">
+
+    </div>
+  </div>
+</section>
+
+
 <section class="hero is-small">
   <div class="section-container">
     <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Calibration Process and Error</h2>
@@ -217,7 +229,7 @@
     <div class="hero-body">
       <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/spatial_res_7.png" alt="Description">
         
-      <p>We evaluated each sensor's ability to distinguish closely spaced contact points by testing their performance across features ranging from 0.25mm to 1.75mm. Using 3D-printed samples and 100 repeated presses per sample (with randomized orientations), we measured classification accuracy at different tolerance thresholds to determine spatial resolution.</p>
+      <p>We evaluated each sensor's ability to distinguish closely spaced contact points by testing their performance across features ranging from 0.05mm to 2.00mm. Using 3D-printed samples and 100 repeated presses per sample (with randomized orientations), we measured classification accuracy at different tolerance thresholds to determine spatial resolution.</p>
       
       <p><strong>Key Findings:</strong> All sensors achieved near-perfect accuracy at resolutions above 5mm. At the challenging 0.05mm threshold:</p>
         
@@ -301,7 +313,7 @@
     <div class="hero-body">
       <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/sensitivity.png" alt="Description">
       <p>
-        <strong>Sensitivity Analysis:</strong> We define tactile sensor sensitivity as <em>S</em> = Δ<em>z</em>/<em>F</em>, where Δ<em>z</em> is indentation depth and <em>F</em> is applied normal force, measuring how effectively small input changes convert to output signals. To evaluate this, robots performed systematic 0.1 mm increment indentations across sensor surfaces, recording force-displacement data at each grid point (Fig. 4). This generated spatial sensitivity maps revealing local responsiveness variations.
+        <strong>Sensitivity Analysis:</strong> We define tactile sensor sensitivity as <em>S</em> = Δ<em>z</em>/<em>F</em>, where Δ<em>z</em> is indentation depth and <em>F</em> is applied normal force, measuring how effectively small input changes convert to output signals. To evaluate this, robots performed systematic 0.1 mm increment indentations across sensor surfaces, recording force-displacement data at each grid point. This generated spatial sensitivity maps revealing local responsiveness variations.
       </p>
       
       <p>
@@ -321,7 +333,7 @@
     <div class="hero-body">
       <img style="width: 100%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/spatial_robustness.png" alt="Description">
       <p>
-        <strong>Spatial Robustness Analysis:</strong> We evaluated how consistently sensors perform when contact location varies across their surface, a critical property for real-world applications. Testing four sensors (ViTacTip, MagicTac, Gelmini, GelminiWM), we measured MAE and variability for position (P<sub>xy</sub>, P<sub>z</sub>) and force (F<sub>xy</sub>, F<sub>z</sub>) estimation across radial positions and indentation depths (Fig. 5). ViTacTip showed superior position accuracy (0.5 mm MAE, 0.216 mm STD) due to its spherical cavity design, while Gel-based sensors exhibited higher edge errors from planar optical distortions.
+        <strong>Spatial Robustness Analysis:</strong> We evaluated how consistently sensors perform when contact location varies across their surface, a critical property for real-world applications. Testing four sensors (ViTacTip, MagicTac, Gelmini, GelminiWM), we measured MAE and variability for position (P<sub>xy</sub>, P<sub>z</sub>) and force (F<sub>xy</sub>, F<sub>z</sub>) estimation across radial positions and indentation depths. ViTacTip showed superior position accuracy (0.5 mm MAE, 0.216 mm STD) due to its spherical cavity design, while Gel-based sensors exhibited higher edge errors from planar optical distortions.
       </p>
       
       <p>
@@ -349,7 +361,7 @@
           </p>
           
           <p>
-            <strong>Comparative Performance:</strong> The results reveal complementary strengths - ViTacTip maintains better tangent-force and position robustness, while MagicTac excels in normal-force estimation. For normal position estimation, both sensors performed similarly, with ViTacTip showing slightly better average accuracy. MagicTac's embedded markers in lattice structure caused tracking challenges under variable lighting, while ViTacTip's material properties made it more vulnerable to intensity variations (Fig. 6c).
+            <strong>Comparative Performance:</strong> The results reveal complementary strengths - ViTacTip maintains better tangent-force and position robustness, while MagicTac excels in normal-force estimation. For normal position estimation, both sensors performed similarly, with ViTacTip showing slightly better average accuracy. MagicTac's embedded markers in lattice structure caused tracking challenges under variable lighting, while ViTacTip's material properties made it more vulnerable to intensity variations.
           </p>
         </div>
       </div>
@@ -388,14 +400,12 @@
 
 <section class="is-small section">
   <div class="section-container">
-      <h2 style="padding-top: 10px; text-align: center;" class="title">Repeatibility</h2>
+      <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Repeatibility</h2>
   
 
     <div class="hero-body">
-      <img style="width: 100%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/repeatbility_new.png" alt="Description">
-      <!-- <h2 class="subtitle has-text-centered">
-        We evaluated the repeatability of three tactile sensors—ViTacTip, MagicTac, and Gelmini—measuring standard deviation (STD) of force components (F<sub>x</sub>, F<sub>y</sub>, F<sub>z</sub>) and positional components (P<sub>x</sub>, P<sub>y</sub>, P<sub>z</sub>) across multiple trials at various indentation depths. Figure Xa compares sensor structures and dimensions. Figure Xb shows STDs of all six components, while Figure Xc plots repeatability (STD) versus depth, with positional STDs (P<sub>x</sub>, P<sub>y</sub>, P<sub>z</sub>, left y-axis in mm) and force STDs (F<sub>x</sub>, F<sub>y</sub>, F<sub>z</sub>, right y-axis in N) for each sensor: ViTacTip (left), MagicTac (center), and Gelmini (right).
-      </h2> -->
+      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/repeatbility_new.png" alt="Description">
+
       <p><strong>Repeatability Analysis:</strong> We evaluated how consistently each sensor responded to repeated stimuli by conducting 100 compression cycles (in 0.1mm steps to maximum depth) across their surfaces. Using our ResNet-based model, we analyzed standard deviation (STD) of both force (F<sub>xy</sub>, F<sub>z</sub>) and position (P<sub>xy</sub>, P<sub>z</sub>) predictions.</p>
 
     
