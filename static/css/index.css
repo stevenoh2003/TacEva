@@ -8,6 +8,13 @@ body {
     padding-right: 1.5rem !important;
   }
 }
+
+.custom-bullets {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-left: 1.5em;
+  padding-left: 1.5em;
+}
     /* Add this to your existing CSS */
   .section-container {
     width: 80%;

@@ -175,25 +175,37 @@
 </section>
 <!-- End paper abstract -->
 
+
 <section class="hero is-small">
   <div class="section-container">
-    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Calibration</h2>
+    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Definitions of Properties</h2>
+  
+    <div class="hero-body">
+      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/definition.png" alt="Properties definition">
+
+    </div>
+  </div>
+</section>
+<section class="hero is-small">
+  <div class="section-container">
+    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Calibration Process and Calibration Error</h2>
   
     <div class="hero-body">
       <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/calibration.png" alt="VBTS calibration setup diagram">
       
       <p><strong>Two-Stage Calibration:</strong> Our framework implements sequential calibration procedures: (1) <em>Surface-geometry reconstruction</em> to map the 3D sensor surface using a robotic arm and force-sensitive spherical indenter (10mm radius), and (2) <em>Force-localization calibration</em> establishing optical-output-to-force mappings through systematic probing.</p>
-
-      <img style="width: 70%; display: block; margin: 2rem auto;" src="static/images/calibration_error_3.png" alt="Calibration error results">
-
       <p><strong>Methodology:</strong> Using a 6-axis F/T sensor and UFactory 850 robotic arm, we:</p>
-      <ul style="margin-left: 1.5em; padding-left: 1.5em;">
+      <ul style="margin-left: 1.5em; padding-left: 1.5em;" class="custom-bullets">
         <li>Reconstruct surface geometry via 0.1mm-step contact probing (0.02N threshold)</li>
         <li>Generate randomized normal/shear force stimuli (x-y displacements + depth variations)</li>
-        <li>Train ResNet-18 models on synchronized camera-force data (70:20:10 train-val-test split)</li>
+        <li>Train ResNet-18 models on synchronized camera-force data (70:20:10 train-val-test split). The methodology is not meant to be the state-of-the-art mapping model for any VBTS, thus we encourage the usage of custmized sensor representation upon adoption.</li>
       </ul>
+      <p><strong>Key Advantage:</strong> This approach creates precise reference geometries and force-response models while accounting for both normal and shear force interactions across the entire sensing surface in one single comprehensive process.</p>
 
-      <p><strong>Key Advantage:</strong> This approach creates precise reference geometries and force-response models while accounting for both normal and shear force interactions across the entire sensing surface.</p>
+      <img style="width: 100%; display: block; margin: 2rem auto;" src="static/images/regression_result.png" alt="Calibration error results">
+      <p><strong>Evaluation Results:</strong> Our comparative analysis revealed distinct sensor strengths: ViTacTip achieved the lowest force prediction errors (MAE) for both lateral (F<sub>xy</sub>) and normal forces (F<sub>z</sub>), while GelSightWM showed strong normal force accuracy but higher proportional errors (sMAPE) in lateral forces due to lacking surface markers. For positional accuracy, GelSight variants excelled in vertical positioning (P<sub>z</sub>) from their opaque elastomers, while MagicTac showed lowest lateral position (P<sub>xy</sub>) MAE and ViTacTip demonstrated the most consistent predictions (highest R<sup>2</sup>). These results, quantified through MAE (absolute error), R<sup>2</sup> (trend alignment), and sMAPE (relative error), highlight the importance of sensor selection based on specific force/position measurement requirements.</p>
+
+
     </div>
   </div>
 </section>
@@ -208,7 +220,7 @@
       
       <p><strong>Key Findings:</strong> All sensors achieved near-perfect accuracy at resolutions above 5mm. At the challenging 0.05mm threshold:</p>
         
-      <ul style="margin-left: 1.5em; padding-left: 1.5em;">
+      <ul style="margin-left: 1.5em; padding-left: 1.5em;" class="custom-bullets">
         <li><strong>Gelmini series</strong> maintained exceptional performance (99% accuracy)</li>
         <li><strong>MagicTac</strong> showed similar high-resolution capabilities</li>
         <li><strong>ViTacTip</strong> accuracy dropped to 80%, indicating limitations in fine discrimination</li>
