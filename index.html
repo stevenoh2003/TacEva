@@ -188,10 +188,11 @@
 </section>
 <section class="hero is-small">
   <div class="section-container">
-    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Calibration Process and Calibration Error</h2>
+    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Calibration Process and Error</h2>
   
     <div class="hero-body">
-      <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/calibration.png" alt="VBTS calibration setup diagram">
+      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/calibration_4.png" alt="VBTS calibration setup diagram">
+
       
       <p><strong>Two-Stage Calibration:</strong> Our framework implements sequential calibration procedures: (1) <em>Surface-geometry reconstruction</em> to map the 3D sensor surface using a robotic arm and force-sensitive spherical indenter (10mm radius), and (2) <em>Force-localization calibration</em> establishing optical-output-to-force mappings through systematic probing.</p>
       <p><strong>Methodology:</strong> Using a 6-axis F/T sensor and UFactory 850 robotic arm, we:</p>
@@ -214,7 +215,7 @@
     <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Spatial Resolution</h2>
   
     <div class="hero-body">
-      <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/spatial_res_7.png" alt="Description">
+      <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/spatial_res_7.png" alt="Description">
         
       <p>We evaluated each sensor's ability to distinguish closely spaced contact points by testing their performance across features ranging from 0.25mm to 1.75mm. Using 3D-printed samples and 100 repeated presses per sample (with randomized orientations), we measured classification accuracy at different tolerance thresholds to determine spatial resolution.</p>
       
@@ -298,7 +299,7 @@
   
 
     <div class="hero-body">
-      <img style="width: 80%; display: block; margin: 0 auto;" src="static/images/sensitivity.png" alt="Description">
+      <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/sensitivity.png" alt="Description">
       <p>
         <strong>Sensitivity Analysis:</strong> We define tactile sensor sensitivity as <em>S</em> = Δ<em>z</em>/<em>F</em>, where Δ<em>z</em> is indentation depth and <em>F</em> is applied normal force, measuring how effectively small input changes convert to output signals. To evaluate this, robots performed systematic 0.1 mm increment indentations across sensor surfaces, recording force-displacement data at each grid point (Fig. 4). This generated spatial sensitivity maps revealing local responsiveness variations.
       </p>
@@ -318,7 +319,7 @@
   
 
     <div class="hero-body">
-      <img style="width: 90%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/spatial_robustness.png" alt="Description">
+      <img style="width: 100%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/spatial_robustness.png" alt="Description">
       <p>
         <strong>Spatial Robustness Analysis:</strong> We evaluated how consistently sensors perform when contact location varies across their surface, a critical property for real-world applications. Testing four sensors (ViTacTip, MagicTac, Gelmini, GelminiWM), we measured MAE and variability for position (P<sub>xy</sub>, P<sub>z</sub>) and force (F<sub>xy</sub>, F<sub>z</sub>) estimation across radial positions and indentation depths (Fig. 5). ViTacTip showed superior position accuracy (0.5 mm MAE, 0.216 mm STD) due to its spherical cavity design, while Gel-based sensors exhibited higher edge errors from planar optical distortions.
       </p>
@@ -338,7 +339,7 @@
   
 
     <div class="hero-body">
-      <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/lightning_robustness.png" alt="Description">
+      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/lightning_robustness.png" alt="Description">
       <div class="lighting-analysis">
         <div class="text-with-image">
           <img src="static/images/lightning_robustness_table.png" class="wrapped-image right" alt="Lighting robustness comparison table">
