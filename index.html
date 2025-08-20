@@ -48,8 +48,28 @@
 </head>
 <body>
 
+  <!-- Floating hamburger menu -->
+  <div id="ham-menu" class="ham-menu">
+    <button id="ham-toggle" class="ham-btn" aria-label="Open menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <div id="ham-panel" class="ham-panel" aria-hidden="true">
+      <a href="#home">Top</a>
+      <a href="#abstract">Abstract</a>
+      <a href="#papers">Survey Table</a>
+      <a href="#calibration">Calibration</a>
+      <a href="#spatial-resolution">Spatial Resolution</a>
+      <a href="#sensitivity">Sensitivity</a>
+      <a href="#spatial-robustness">Spatial Robustness</a>
+      <a href="#lighting-robustness">Lighting Robustness</a>
+      <a href="#repeatability">Repeatibility</a>
+      <a href="#BibTeX">BibTeX</a>
+    </div>
+  </div>
 
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
@@ -138,7 +158,7 @@
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
-<section class="section hero is-light">
+<section class="section hero is-light" id="abstract">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -248,7 +268,7 @@
   </div>
 </section>
 
-<section class="hero is-small">
+<section class="hero is-small" id="calibration">
   <div class="section-container">
     <h2 class="title is-3 section-title">Calibration Process and Error</h2>
   
@@ -279,7 +299,7 @@
     </div>
   </div>
 </section>
-<section class="hero is-small">
+<section class="hero is-small" id="spatial-resolution">
   <div class="section-container">
     <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Spatial Resolution</h2>
   
@@ -362,7 +382,7 @@
   }
 </style>
 
-<section class="hero is-small">
+<section class="hero is-small" id="sensitivity">
   <div class="section-container">
         <h2 class="title is-3 section-title">Sensitivity</h2>
   
@@ -382,7 +402,7 @@
   </div>
 </section>
 
-<section class="hero is-small">
+<section class="hero is-small" id="spatial-robustness">
   <div class="section-container">
         <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Spatial Robustness</h2>
   
@@ -402,7 +422,7 @@
   </div>
 </section>
 
-<section class="hero is-small">
+<section class="hero is-small" id="lighting-robustness">
   <div class="section-container">
         <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Lightning Robustness</h2>
   
@@ -455,7 +475,7 @@
 </section>
 
 
-<section class="is-small section">
+<section class="is-small section" id="repeatability">
   <div class="section-container">
       <h2 class="title is-3 section-title">Repeatibility</h2>
   
