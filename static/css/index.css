@@ -169,5 +169,97 @@ body {
   font-size: smaller;
 }
 
+/* --- Papers table description styles --- */
+.description-container { max-width: 100%; }
+.description-text { max-height: 3.6em; overflow: hidden; position: relative; }
+.description-text::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.2em; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); }
+.description-text.expanded { max-height: none; }
+.description-text.expanded::after { display: none; }
+.description-toggle { margin-top: 0.25rem; }
+
+/* Filters row layout fix */
+#papers .columns .column { min-width: 0; }
+#papers .select.is-fullwidth select { width: 100%; }
+#papers .input { width: 100%; }
+
+@media screen and (min-width: 1024px) {
+	#papers .columns.is-vcentered { flex-wrap: nowrap; }
+}
+
+/* Responsive enhancements for papers section and general content */
+#papers .columns .column { margin-bottom: 0.5rem; }
+#papers .level { flex-wrap: wrap; }
+#papers .level-right { display: flex; justify-content: flex-end; }
+#papers .level-left { display: flex; align-items: center; }
+
+/* Make YouTube iframe responsive without affecting other embeds */
+iframe[title="YouTube video player"] {
+	width: 100% !important;
+	height: auto !important;
+	aspect-ratio: 16 / 9;
+	max-width: 100%;
+	border: none;
+}
+
+/* Table readability on mobile: hide Conference/Paper/Website, favor description */
+@media screen and (max-width: 768px) {
+	#papers-table th:nth-child(3),
+	#papers-table td:nth-child(3),
+	#papers-table th:nth-child(4),
+	#papers-table td:nth-child(4),
+	#papers-table th:nth-child(5),
+	#papers-table td:nth-child(5) { display: none; }
+	#papers-table th:nth-child(6) { width: auto; }
+	#papers .level-right { justify-content: center; margin-top: 0.5rem; }
+	#papers .level-left { justify-content: center; }
+}
+
+/* Unified section title spacing */
+.section-title { text-align: center; margin: 2rem 0 1rem 0; }
+
+/* Enforce centered alignment for all section titles */
+h2.section-title, .title.section-title { text-align: center !important; }
+
+/* Tighten vertical rhythm around section titles */
+.hero + .section .section-title { margin-top: 0.5rem; }
+.section .section-title { margin-top: 0.75rem; }
+
+/* Reduce space inside non-hero sections that use hero-body container (e.g., Repeatibility) */
+.section .hero-body { padding-top: 0.75rem; padding-bottom: 1.25rem; }
+
+/* Make small sections less tall on mobile and desktop */
+.section.is-small { padding-top: 1rem; padding-bottom: 1.5rem; }
+
+/* Mobile width tuning for better readability */
+@media screen and (max-width: 768px) {
+	.section-container, .container.is-max-desktop { width: 96%; padding: 0 8px; }
+	.hero .container.is-max-desktop { width: 96%; }
+	.section { padding-left: 0.75rem; padding-right: 0.75rem; }
+	.section.is-small .section-container { width: 96%; }
+}
+
+/* Ensure table can scroll horizontally on small screens to avoid cramped text */
+@media screen and (max-width: 768px) {
+	.table-container { overflow-x: auto; }
+}
+
+/* Lightbox overlay */
+.lightbox-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 1000; }
+.lightbox-overlay.is-active { display: flex; }
+.lightbox-content { max-width: 95vw; max-height: 90vh; }
+.lightbox-content img { max-width: 100%; max-height: 90vh; }
+.lightbox-close { position: absolute; top: 12px; right: 12px; color: #fff; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 6px 10px; cursor: pointer; }
+
+/* Center and size Sketchfab embeds */
+.sketchfab-embed-wrapper { width: 100% !important; margin-left: auto; margin-right: auto; display: block; }
+@media screen and (max-width: 768px) {
+	.sketchfab-embed-wrapper { width: 100% !important; }
+}
+
+/* Center columns content for the CAD models row */
+.section-container .columns.is-mobile > .column { display: flex; justify-content: center; }
+.section-container .columns.is-mobile > .column .sketchfab-embed-wrapper { max-width: 540px; width: 100% !important; }
+.section-container .columns.is-mobile > .column .sketchfab-embed-wrapper iframe { width: 100% !important; height: 100% !important; }
+
 
 

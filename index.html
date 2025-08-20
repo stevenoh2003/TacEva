@@ -42,6 +42,8 @@
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/papers-data.js"></script>
+  <script src="static/js/papers-table.js"></script>
   <script src="static/js/index.js"></script>
 </head>
 <body>
@@ -173,33 +175,82 @@
   </div>
 </section>
 
-<section class="hero is-small">
-  <div class="section-container">
-    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Existing VBTS Work's Evaluation Methods</h2>
-    <p>Existing VBTS research offer various evaluations of their design and sensing properties. However, there exist no universal benchmarking procedure; furthermore, no method captures both inherent design properties and sensing performance in one single pipeline. </p>
-    <div class="hero-body">
-      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/existing_vbts.png" alt="VBTS calibration setup diagram">
+<!-- Interactive Papers Table -->
+<section class="section" id="papers">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Existing VBTS Work and Their Evaluation Methods</h2>
+    <p class="content has-text-centered">Explore papers on vision-based tactile sensors. Use search and filters; click headers to sort.</p>
 
+    <div class="box">
+      <div class="columns is-variable is-2 is-multiline is-vcentered">
+        <div class="column is-5">
+          <input id="papers-search" class="input" type="text" placeholder="Search all fields...">
+        </div>
+        <div class="column is-3 is-narrow">
+          <div class="select is-fullwidth">
+            <select id="papers-filter-category">
+              <option value="">All Categories</option>
+            </select>
+          </div>
+        </div>
+        <div class="column is-3 is-narrow">
+          <div class="select is-fullwidth">
+            <select id="papers-filter-conference">
+              <option value="">All Conferences</option>
+            </select>
+          </div>
+        </div>
+        <div class="column is-narrow">
+          <button id="papers-clear" class="button is-danger is-light">Clear</button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table id="papers-table" class="table is-fullwidth is-striped is-hoverable">
+          <thead>
+            <tr>
+              <th data-sort="category" style="cursor:pointer;">Mechanism</th>
+              <th data-sort="title" style="cursor:pointer;">Sensor</th>
+              <th data-sort="conference" style="cursor:pointer;">Conference</th>
+              <th>Paper</th>
+              <th>Website</th>
+              <th style="width:40%">Performance Metrics / Description</th>
+            </tr>
+          </thead>
+          <tbody id="papers-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="level" style="margin-top: 0.5rem;">
+        <div class="level-left">
+          <div class="field is-grouped">
+            <label class="label" style="margin-right:0.5rem;">Rows</label>
+            <div class="control">
+              <div class="select is-small">
+                <select id="papers-page-size">
+                  <option value="10" selected>10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="level-right">
+          <nav class="pagination is-small" role="navigation" aria-label="pagination">
+            <a class="pagination-previous" id="papers-prev">Previous</a>
+            <a class="pagination-next" id="papers-next">Next</a>
+            <ul class="pagination-list" id="papers-pages"></ul>
+          </nav>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="hero is-small">
   <div class="section-container">
-    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">TacEva: A Comprehensive Benchmarking Pipeline</h2>
-  
-    <div class="hero-body">
-      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/definition.png" alt="Properties definition">
-
-    </div>
-  </div>
-</section>
-
-
-
-<section class="hero is-small">
-  <div class="section-container">
-    <h2 style="padding-top: 10px; text-align: center; " class="title is-3">Calibration Process and Error</h2>
+    <h2 class="title is-3 section-title">Calibration Process and Error</h2>
   
     <div class="hero-body">
       <div style="text-align: center; padding-bottom: 10px;">
@@ -313,7 +364,7 @@
 
 <section class="hero is-small">
   <div class="section-container">
-        <h2 style="margin-top: 50px; text-align: center;" class="title is-3">Sensitivity</h2>
+        <h2 class="title is-3 section-title">Sensitivity</h2>
   
 
     <div class="hero-body">
@@ -406,7 +457,7 @@
 
 <section class="is-small section">
   <div class="section-container">
-      <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Repeatibility</h2>
+      <h2 class="title is-3 section-title">Repeatibility</h2>
   
 
     <div class="hero-body">
@@ -471,5 +522,45 @@
 
     <!-- End of Statcounter Code -->
 
-  </body>
+    <!-- Lightbox container -->
+  <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Close">Close</button>
+    <div class="lightbox-content"></div>
+  </div>
+
+  <script>
+  // Simple lightbox: click any image inside .section-container or .hero-body to enlarge
+  document.addEventListener('DOMContentLoaded', function(){
+    const overlay = document.getElementById('lightbox');
+    const content = overlay.querySelector('.lightbox-content');
+    const closeBtn = overlay.querySelector('.lightbox-close');
+
+    function open(src, alt){
+      content.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = src; img.alt = alt || '';
+      content.appendChild(img);
+      overlay.classList.add('is-active');
+      overlay.setAttribute('aria-hidden','false');
+    }
+    function close(){
+      overlay.classList.remove('is-active');
+      overlay.setAttribute('aria-hidden','true');
+      content.innerHTML = '';
+    }
+
+    document.body.addEventListener('click', function(e){
+      const target = e.target;
+      if(target.tagName === 'IMG' && (target.closest('.section-container') || target.closest('.hero-body'))){
+        // avoid lightbox for wrapped images in text where links might exist
+        if(target.closest('a')) return;
+        open(target.src, target.alt);
+      }
+    });
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  });
+  </script>
+</body>
   </html>
