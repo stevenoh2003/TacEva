@@ -476,6 +476,26 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
   </div>
 </section>
 
+<section class="is-small section" id="summary">
+  <div class="section-container">
+      <h2 class="title is-3 section-title">Summary of VBTS Evaluation</h2>
+  
+
+    <div class="hero-body">
+      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/96293.png" alt="Description">
+      
+      <p style="margin-top: 2rem; text-align: justify;">
+        <strong>Sensor Selection Guide:</strong> Our comprehensive evaluation reveals distinct performance profiles across the four tested VBTS. <strong>GelSight</strong> offers the highest camera resolution and uniform gel sensitivity, making it ideal for fine-grained contact localization, though with trade-offs in gel stiffness and modest frame rates. <strong>GelSightWM</strong> excels in normal force and depth estimation (F<sub>z</sub>/P<sub>z</sub>) while remaining weaker in shear force, with its marker-free design benefiting planar contact detection. <strong>ViTacTip</strong> achieves superior force accuracy and repeatability with the softest, thickest gel and largest field of view, making it optimal for deep or soft contacts requiring force sensitivity, despite limitations in depth estimation and light sensitivity. <strong>MagicTac</strong> excels in contact localization accuracy and offers the highest frame rate, though with weaker force estimation and poor illumination robustness due to internal grid refractive artifacts. For applications prioritizing deep/soft contact force sensitivity, choose ViTacTip; for shallow/firm contacts requiring speed and planar localization, select MagicTac; for robust depth estimation and illumination stability, opt for GelSight variants, with GelSightWM providing a practical solution when shear force is not critical.
+      </p>
+
+</div>
+
+
+    </div>
+  </div>
+</section>
+
+
 
 
 <!-- Additional Analysis Section -->
@@ -484,13 +504,21 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
     <h2 class="title is-3 section-title">Additional Analysis</h2>
     
     <div class="hero-body">
-      <h3 class="title is-4 has-text-centered">Intra-sensor Variability</h3>
-      <img style="width: 60%; display: block; margin: 0 auto;" src="static/images/intra_sensor_2.png" alt="Intra-sensor variability analysis">
+      <h3 class="title is-4 has-text-centered">Inter-sensor Variability</h3>
+      <img style="width: 60%; display: block; margin: 0 auto;" src="static/images/intra_sensor_2.png" alt="Inter-sensor variability analysis">
+      
+      <p style="margin-top: 1.5rem; text-align: justify;">
+        <strong>Inter-sensor Consistency Analysis:</strong> We evaluated the manufacturing consistency between different sensors of the same type by comparing 3D surface reconstructions collected from multiple sensor units. Using our calibration methodology, we performed surface point cloud acquisitions across different sensor instances and analyzed the variability through optimal rigid transformation alignment and nearest-neighbor distance analysis. After preprocessing to remove outliers and aligning point clouds within shared convex hull regions, we computed the average absolute difference between interpolated surfaces to quantify manufacturing consistency. This analysis revealed the <strong>consistency of the manufacturing process</strong> for each sensor type, providing insights into the variability between individual sensor units and helping assess the reliability of sensor performance across different manufactured instances of the same design.
+      </p>
     </div>
 
     <div class="hero-body">
       <h3 class="title is-4 has-text-centered">Hysteresis</h3>
       <img style="width: 50%; display: block; margin: 0 auto;" src="static/images/hysterisis_4.png" alt="Hysteresis analysis">
+      
+      <p style="margin-top: 1.5rem; text-align: justify;">
+        <strong>Hysteresis Analysis:</strong> We evaluated sensor hysteresis by measuring the difference between force readings during loading and unloading phases, expressed as the area between these curves over their overlapping depth range. Using a systematic protocol with 0.1mm incremental loading followed by rapid retraction, we calculated hysteresis values across 100 surface points through trapezoidal integration of the force-depth curves. The analysis revealed that <strong>ViTacTip exhibited measurable hysteresis effects</strong> with spatial variation across its surface, while <strong>other tested sensors (GelSight variants and MagicTac) showed no evident hysteresis</strong>. This difference likely stems from ViTacTip's unique material properties and internal structure, indicating that applications requiring precise reversible force measurements may need to account for these hysteresis characteristics when using ViTacTip sensors.
+      </p>
     </div>
   </div>
 </section>
