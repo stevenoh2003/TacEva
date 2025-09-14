@@ -276,5 +276,30 @@ h2.section-title, .title.section-title { text-align: center !important; }
 .section-container .columns.is-mobile > .column .sketchfab-embed-wrapper { max-width: 540px; width: 100% !important; }
 .section-container .columns.is-mobile > .column .sketchfab-embed-wrapper iframe { width: 100% !important; height: 100% !important; }
 
+/* Table column width enforcement */
+#papers-table {
+  table-layout: fixed;
+}
+
+#papers-table th:nth-child(1),
+#papers-table td:nth-child(1) {
+  width: 12% !important;
+}
+
+#papers-table th:nth-child(2),
+#papers-table td:nth-child(2) {
+  width: 15% !important;
+}
+
+#papers-table th:nth-child(3),
+#papers-table td:nth-child(3) {
+  width: 8% !important;
+}
+
+#papers-table th:nth-child(4),
+#papers-table td:nth-child(4) {
+  width: 65% !important;
+}
+
 
 

@@ -73,9 +73,9 @@
 			const tdTitle = document.createElement('td');
 			tdTitle.textContent = p.title || '';
 			tr.appendChild(tdTitle);
-			const tdConf = document.createElement('td');
-			tdConf.textContent = p.conference || '';
-			tr.appendChild(tdConf);
+			// const tdConf = document.createElement('td');
+			// tdConf.textContent = p.conference || '';
+			// tr.appendChild(tdConf);
 			const tdPaper = document.createElement('td');
 			if(p.paperUrl){
 				const aPaper = document.createElement('a');
@@ -86,16 +86,16 @@
 				tdPaper.appendChild(aPaper);
 			} else { tdPaper.textContent = '—'; }
 			tr.appendChild(tdPaper);
-			const tdWeb = document.createElement('td');
-			if(p.websiteUrl){
-				const aWeb = document.createElement('a');
-				aWeb.href = p.websiteUrl;
-				aWeb.target = '_blank';
-				aWeb.textContent = 'Website';
-				aWeb.className = 'has-text-link';
-				tdWeb.appendChild(aWeb);
-			} else { tdWeb.textContent = '—'; }
-			tr.appendChild(tdWeb);
+			// const tdWeb = document.createElement('td');
+			// if(p.websiteUrl){
+			// 	const aWeb = document.createElement('a');
+			// 	aWeb.href = p.websiteUrl;
+			// 	aWeb.target = '_blank';
+			// 	aWeb.textContent = 'Website';
+			// 	aWeb.className = 'has-text-link';
+			// 	tdWeb.appendChild(aWeb);
+			// } else { tdWeb.textContent = '—'; }
+			// tr.appendChild(tdWeb);
 			const tdDesc = document.createElement('td');
 			tdDesc.appendChild(renderDescriptionCell(p.description || ''));
 			tr.appendChild(tdDesc);
@@ -108,21 +108,21 @@
 	function applyFilters(){
 		const search = document.getElementById('papers-search');
 		const cat = document.getElementById('papers-filter-category');
-		const conf = document.getElementById('papers-filter-conference');
+		// const conf = document.getElementById('papers-filter-conference');
 		let data = state.data.slice();
 		const q = normalize(search && search.value);
 		const c = normalize(cat && cat.value);
-		const cf = normalize(conf && conf.value);
+		// const cf = normalize(conf && conf.value);
 		if(q){
 			data = data.filter(p => (
 				normalize(p.title).includes(q) ||
-				normalize(p.conference).includes(q) ||
+				// normalize(p.conference).includes(q) ||
 				normalize(p.category).includes(q) ||
 				normalize(p.description).includes(q)
 			));
 		}
 		if(c){ data = data.filter(p => normalize(p.category) === c); }
-		if(cf){ data = data.filter(p => normalize(p.conference) === cf); }
+		// if(cf){ data = data.filter(p => normalize(p.conference) === cf); }
 		state.filtered = data;
 	}
 
@@ -148,7 +148,7 @@
 		state.filtered = state.data.slice();
 		const search = document.getElementById('papers-search');
 		const cat = document.getElementById('papers-filter-category');
-		const conf = document.getElementById('papers-filter-conference');
+		// const conf = document.getElementById('papers-filter-conference');
 		const clearBtn = document.getElementById('papers-clear');
 		const thSorts = document.querySelectorAll('#papers-table thead th[data-sort]');
 		const pageSizeSel = document.getElementById('papers-page-size');
@@ -160,9 +160,11 @@
 			draw();
 		}
 
-		[search, cat, conf].forEach(el => el && el.addEventListener('input', reapply));
+		[search, cat].forEach(el => el && el.addEventListener('input', reapply));
+		// [search, cat, conf].forEach(el => el && el.addEventListener('input', reapply));
 		clearBtn && clearBtn.addEventListener('click', function(){
-			[search, cat, conf].forEach(el => { if(el) el.value = ''; });
+			[search, cat].forEach(el => { if(el) el.value = ''; });
+			// [search, cat, conf].forEach(el => { if(el) el.value = ''; });
 			reapply();
 		});
 
@@ -190,7 +192,7 @@
 			});
 		}
 		populate('papers-filter-category', state.data.map(p=>p.category));
-		populate('papers-filter-conference', state.data.map(p=>p.conference));
+		// populate('papers-filter-conference', state.data.map(p=>p.conference));
 
 		// page size
 		if(pageSizeSel){

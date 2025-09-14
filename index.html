@@ -64,7 +64,8 @@
       <a href="#sensitivity">Sensitivity</a>
       <a href="#spatial-robustness">Spatial Robustness</a>
       <a href="#lighting-robustness">Lighting Robustness</a>
-      <a href="#repeatability">Repeatibility</a>
+      <a href="#repeatability">Repeatability</a>
+      <a href="#additional-analysis">Additional Analysis</a>
       <a href="#BibTeX">BibTeX</a>
     </div>
   </div>
@@ -149,7 +150,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img style="width: 80%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/system_pipeline.png" alt="Research framework diagram">
+      <img style="width: 60%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/23103.png" alt="Research framework diagram">
       <h2 class="subtitle has-text-centered">
         We propose a comprehensive framework for evaluating vision-based tactile sensors, systematically comparing performance across design properties and sensing performance. In this paper, we showcase our framework against four representative VBTS (ViTacTip, MagicTac, GelSight, GelSightWM).      </h2>
     </div>
@@ -165,29 +166,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Vision-based tactile sensors (VBTS) have gained
-            widespread application in robotic tasks, which is attributed to
-            their high spatial resolution and relatively low manufacturing
-            costs. In current research, variations in sensing mechanisms,
-            structural dimensions, and other parameters among different
-            VBTS lead to significant performance disparities. This diversity
-            creates challenges for users to optimize VBTS for specific tasks, as
-            the initial choice and subsequent fine-tuning can be hindered by
-            a lack of standardized metrics. To address this issue, this study
-            proposes Tac-Evaluate, a comprehensive evaluation framework
-            for the quantitative analysis of VBTS performance. We first
-            define a set of performance metrics tailored to typical application
-            scenarios, specifically chosen to represent key quantitative char-
-            acteristics of VBTS. For each metric, we design an experimental
-            pipeline that provides a structured framework for performance
-            quantification. This evaluation approach is then applied to
-            multiple VBTSs based on different sensing principles to conduct
-            performance assessments. The experimental results demonstrate
-            that this framework provides a thorough evaluation of VBTS
-            multifunctionality and offers precise quantitative indicators for
-            each performance dimension. This supports researchers in pre-
-            selecting appropriate VBTS for specific tasks and provides
-            performance-guided insights for optimizing the design of VBTS.
+Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because of the high spatial resolution they offer and their relatively low manufacturing costs. However, variations in their sensing mechanisms, structural dimension, and other parameters lead to significant performance disparities between VBTSs currently in use. This makes it challenging to optimize VBTSs for specific tasks, as both the initial choice and subsequent fine-tuning are hindered by the lack of standardized metrics. To address this issue, we present TacEva, a comprehensive evaluation framework for the quantitative analysis of VBTS performance. We define a set of performance metrics that capture and quantify the key characteristics displayed in typical application scenarios. For each metric, we designed an experimental pipeline that provides a structured procedure for performance quantification. We then applied this evaluation approach to multiple VBTSs with distinct sensing mechanisms. The results show that the proposed framework yields a thorough evaluation of each design, and provides quantitative indicators for each performance dimension. This enables researchers to pre-select the most appropriate VBTS on a task by task basis, and also offers performance-guided insights for the optimization of VBTS design.
             </p>
         </div>
       </div>
@@ -200,6 +179,7 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 section-title">Existing VBTS Work and Their Evaluation Methods</h2>
     <p class="content has-text-centered">Explore papers on vision-based tactile sensors. Use search and filters; click headers to sort.</p>
+    <p class="content has-text-left">For detailed explanation of mechanisms, refer to <a href="https://spj.science.org/doi/epdf/10.34133/cbsystems.0231" target="_blank">this comprehensive survey</a>. VBTSs are categorized according to their underlying sensing principles, including: (i) <strong>Intensity Mapping Method (IMM)</strong>, which infers contact geometry and pressure through spatial variations in reflected light intensity; (ii) <strong>Marker Displacement Method (MDM)</strong>, which detects surface deformation by tracking the displacement of embedded markers under force; and (iii) <strong>Modality Fusion Method (MFM)</strong>, which employs transparent skin to enable multimodal perception.</p>
 
     <div class="box">
       <div class="columns is-variable is-2 is-multiline is-vcentered">
@@ -213,13 +193,13 @@
             </select>
           </div>
         </div>
-        <div class="column is-3 is-narrow">
+        <!-- <div class="column is-3 is-narrow">
           <div class="select is-fullwidth">
             <select id="papers-filter-conference">
               <option value="">All Conferences</option>
             </select>
           </div>
-        </div>
+        </div> -->
         <div class="column is-narrow">
           <button id="papers-clear" class="button is-danger is-light">Clear</button>
         </div>
@@ -231,9 +211,9 @@
             <tr>
               <th data-sort="category" style="cursor:pointer;">Mechanism</th>
               <th data-sort="title" style="cursor:pointer;">Sensor</th>
-              <th data-sort="conference" style="cursor:pointer;">Conference</th>
+              <!-- <th data-sort="conference" style="cursor:pointer;">Conference</th> -->
               <th>Paper</th>
-              <th>Website</th>
+              <!-- <th>Website</th> -->
               <th style="width:40%">Performance Metrics / Description</th>
             </tr>
           </thead>
@@ -270,7 +250,7 @@
 
 <section class="hero is-small" id="calibration">
   <div class="section-container">
-    <h2 class="title is-3 section-title">Calibration Process and Error</h2>
+    <h2 class="title is-3 section-title">Calibration Process</h2>
   
     <div class="hero-body">
       <div style="text-align: center; padding-bottom: 10px;">
@@ -280,7 +260,7 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
         </iframe>
-      </div>      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/calibration_4.png" alt="VBTS calibration setup diagram">
+      </div>      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/calibration_new (1).jpg" alt="VBTS calibration setup diagram">
 
       
       <p><strong>Two-Stage Calibration:</strong> Our framework implements sequential calibration procedures: (1) <em>Surface-geometry reconstruction</em> to map the 3D sensor surface using a robotic arm and force-sensitive spherical indenter (10mm radius), and (2) <em>Force-localization calibration</em> establishing optical-output-to-force mappings through systematic probing.</p>
@@ -292,7 +272,7 @@
       </ul>
       <p><strong>Key Advantage:</strong> This approach creates precise reference geometries and force-response models while accounting for both normal and shear force interactions across the entire sensing surface in one single comprehensive process.</p>
 
-      <img style="width: 100%; display: block; margin: 2rem auto;" src="static/images/regression_error.png" alt="Calibration error results">
+      <img style="width: 100%; display: block; margin: 2rem auto;" src="static/images/regression_full.png" alt="Calibration error results">
       <p><strong>Evaluation Results:</strong> Our comparative analysis revealed distinct sensor strengths: ViTacTip achieved the lowest force prediction errors (MAE) for both lateral (F<sub>xy</sub>) and normal forces (F<sub>z</sub>), while GelSightWM showed strong normal force accuracy but higher proportional errors (sMAPE) in lateral forces due to lacking surface markers. For positional accuracy, GelSight variants excelled in vertical positioning (P<sub>z</sub>) from their opaque elastomers, while MagicTac showed lowest lateral position (P<sub>xy</sub>) MAE and ViTacTip demonstrated the most consistent predictions (highest R<sup>2</sup>). These results, quantified through MAE (absolute error), R<sup>2</sup> (trend alignment), and sMAPE (relative error), highlight the importance of sensor selection based on specific force/position measurement requirements.</p>
 
 
@@ -304,7 +284,7 @@
     <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Spatial Resolution</h2>
   
     <div class="hero-body">
-      <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/spatial_res_7.png" alt="Description">
+      <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/spatial_res_11 (1).jpg" alt="Description">
         
       <p>We evaluated each sensor's ability to distinguish closely spaced contact points by testing their performance across features ranging from 0.05mm to 2.00mm. Using 3D-printed samples and 100 repeated presses per sample (with randomized orientations), we measured classification accuracy at different tolerance thresholds to determine spatial resolution.</p>
       
@@ -388,7 +368,7 @@
   
 
     <div class="hero-body">
-      <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/sensitivity.png" alt="Description">
+      <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/sensitivity_web.jpg" alt="Description">
       <p>
         <strong>Sensitivity Analysis:</strong> We define tactile sensor sensitivity as <em>S</em> = Δ<em>z</em>/<em>F</em>, where Δ<em>z</em> is indentation depth and <em>F</em> is applied normal force, measuring how effectively small input changes convert to output signals. To evaluate this, robots performed systematic 0.1 mm increment indentations across sensor surfaces, recording force-displacement data at each grid point. This generated spatial sensitivity maps revealing local responsiveness variations.
       </p>
@@ -408,7 +388,7 @@
   
 
     <div class="hero-body">
-      <img style="width: 100%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/spatial_robustness.png" alt="Description">
+      <img style="width: 100%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/96300.png" alt="Description">
       <p>
         <strong>Spatial Robustness Analysis:</strong> We evaluated how consistently sensors perform when contact location varies across their surface, a critical property for real-world applications. Testing four sensors (ViTacTip, MagicTac, Gelmini, GelminiWM), we measured MAE and variability for position (P<sub>xy</sub>, P<sub>z</sub>) and force (F<sub>xy</sub>, F<sub>z</sub>) estimation across radial positions and indentation depths. ViTacTip showed superior position accuracy (0.5 mm MAE, 0.216 mm STD) due to its spherical cavity design, while Gel-based sensors exhibited higher edge errors from planar optical distortions.
       </p>
@@ -428,7 +408,7 @@
   
 
     <div class="hero-body">
-      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/lightning_robustness.png" alt="Description">
+      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/lighting_robustness_new (1).jpg" alt="Description">
       <div class="lighting-analysis">
         <div class="text-with-image">
           <img src="static/images/lightning_robustness_table.png" class="wrapped-image right" alt="Lighting robustness comparison table">
@@ -481,7 +461,7 @@
   
 
     <div class="hero-body">
-      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/repeatbility_new.png" alt="Description">
+      <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/93723.png" alt="Description">
 
       <p><strong>Repeatability Analysis:</strong> We evaluated how consistently each sensor responded to repeated stimuli by conducting 100 compression cycles (in 0.1mm steps to maximum depth) across their surfaces. Using our ResNet-based model, we analyzed standard deviation (STD) of both force (F<sub>xy</sub>, F<sub>z</sub>) and position (P<sub>xy</sub>, P<sub>z</sub>) predictions.</p>
 
@@ -498,15 +478,22 @@
 
 
 
+<!-- Additional Analysis Section -->
+<section class="is-small section" id="additional-analysis">
+  <div class="section-container">
+    <h2 class="title is-3 section-title">Additional Analysis</h2>
+    
+    <div class="hero-body">
+      <h3 class="title is-4 has-text-centered">Intra-sensor Variability</h3>
+      <img style="width: 60%; display: block; margin: 0 auto;" src="static/images/intra_sensor_2.png" alt="Intra-sensor variability analysis">
+    </div>
 
-
-
-
-
-
-
-
-
+    <div class="hero-body">
+      <h3 class="title is-4 has-text-centered">Hysteresis</h3>
+      <img style="width: 50%; display: block; margin: 0 auto;" src="static/images/hysterisis_4.png" alt="Hysteresis analysis">
+    </div>
+  </div>
+</section>
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
