@@ -138,10 +138,10 @@
 
 
 <!-- Teaser video-->
-<section class="hero teaser">
+<section class="hero teaser" style="border: none; border-top: none; margin-top: -2rem; padding-top: 1rem;">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img style="width: 80%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/teaser_website.png" alt="Research framework diagram">
+    <div class="hero-body" style="padding-top: 1rem;">
+      <img style="width: 80%; display: block; margin: 0 auto; padding-bottom: 30px; border: none;" src="static/images/teaser_website.png" alt="Research framework diagram">
       <h2 class="subtitle has-text-centered">
         We propose a comprehensive framework for evaluating vision-based tactile sensors, systematically comparing performance across design properties and sensing performance. In this paper, we showcase our framework against four representative VBTS (ViTacTip, MagicTac, GelSight, GelSightWM).      </h2>
     </div>
@@ -263,7 +263,7 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
       </ul>
       <p><strong>Key Advantage:</strong> This approach creates precise reference geometries and force-response models while accounting for both normal and shear force interactions across the entire sensing surface in one single comprehensive process.</p>
 
-      <img style="width: 100%; display: block; margin: 2rem auto;" src="static/images/regression_full.png" alt="Calibration error results">
+      <img style="width: 100%; display: block; margin: 2rem auto;" src="static/images/regression_new-min.png" alt="Calibration error results">
       <p><strong>Evaluation Results:</strong> Our comparative analysis revealed distinct sensor strengths: ViTacTip achieved the lowest force prediction errors (MAE) for both lateral (F<sub>xy</sub>) and normal forces (F<sub>z</sub>), while GelSightWM showed strong normal force accuracy but higher proportional errors (sMAPE) in lateral forces due to lacking surface markers. For positional accuracy, GelSight variants excelled in vertical positioning (P<sub>z</sub>) from their opaque elastomers, while MagicTac showed lowest lateral position (P<sub>xy</sub>) MAE and ViTacTip demonstrated the most consistent predictions (highest R<sup>2</sup>). These results, quantified through MAE (absolute error), R<sup>2</sup> (trend alignment), and sMAPE (relative error), highlight the importance of sensor selection based on specific force/position measurement requirements.</p>
 
 
@@ -349,6 +349,44 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
     .column.is-half {
       width: 100%;
       padding: 0.5rem 0 !important;
+    }
+    
+    /* Make images full width on mobile */
+    .hero-body img,
+    .section-container img,
+    .container img {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    
+    /* Make text smaller on mobile */
+    body {
+      font-size: 14px !important;
+    }
+    
+    p {
+      font-size: 14px !important;
+      line-height: 1.4 !important;
+    }
+    
+    .title.is-1 {
+      font-size: 2rem !important;
+    }
+    
+    .title.is-3 {
+      font-size: 1.5rem !important;
+    }
+    
+    .title.is-4 {
+      font-size: 1.25rem !important;
+    }
+    
+    .subtitle {
+      font-size: 1rem !important;
+    }
+    
+    .is-size-5 {
+      font-size: 0.875rem !important;
     }
   }
 </style>
