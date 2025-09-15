@@ -70,7 +70,7 @@
     </div>
   </div>
 
-  <section class="hero" id="home" style="border: none !important; border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important;">
+  <section class="hero" id="home">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
@@ -172,14 +172,19 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
     <p class="content has-text-centered">Explore papers on vision-based tactile sensors. Use search and filters; click headers to sort.</p>
     <p class="content has-text-left">For detailed explanation of mechanisms, refer to <a href="https://spj.science.org/doi/epdf/10.34133/cbsystems.0231" target="_blank">this comprehensive survey</a>. VBTSs are categorized according to their underlying sensing principles, including: (i) <strong>Intensity Mapping Method (IMM)</strong>, which infers contact geometry and pressure through spatial variations in reflected light intensity; (ii) <strong>Marker Displacement Method (MDM)</strong>, which detects surface deformation by tracking the displacement of embedded markers under force; and (iii) <strong>Modality Fusion Method (MFM)</strong>, which employs transparent skin to enable multimodal perception.</p>
 
-    <div class="box">
+    <div class="box" style="background-color: #f8f9fa; border-radius: 6px; padding: 1.25rem;">
       <div class="columns is-variable is-2 is-multiline is-vcentered">
         <div class="column is-5">
-          <input id="papers-search" class="input" type="text" placeholder="Search all fields...">
+          <div class="control has-icons-left">
+            <input id="papers-search" class="input" type="text" placeholder="Search all fields..." style="border-radius: 4px;">
+            <span class="icon is-left" style="color: #6c757d;">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
         </div>
         <div class="column is-3 is-narrow">
           <div class="select is-fullwidth">
-            <select id="papers-filter-category">
+            <select id="papers-filter-category" style="border-radius: 4px;">
               <option value="">All Categories</option>
             </select>
           </div>
@@ -192,12 +197,12 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
           </div>
         </div> -->
         <div class="column is-narrow">
-          <button id="papers-clear" class="button is-danger is-light">Clear</button>
+          <button id="papers-clear" class="button is-danger is-light" style="border-radius: 4px;">Clear</button>
         </div>
       </div>
 
-      <div class="table-container">
-        <table id="papers-table" class="table is-fullwidth is-striped is-hoverable">
+      <div class="table-container" style="background-color: #f8f9fa; padding: 1rem; border-radius: 6px;">
+        <table id="papers-table" class="table is-fullwidth is-striped is-hoverable" style="background-color: white;">
           <thead>
             <tr>
               <th data-sort="category" style="cursor:pointer;">Mechanism</th>
@@ -349,6 +354,8 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
     box-shadow: none !important;
     outline: none !important;
   }
+  
+
   
   /* Specifically target teaser section */
   .hero.teaser:before,
