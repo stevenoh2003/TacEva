@@ -272,7 +272,7 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
         <p><b>Protocol.</b> Probe the surface on a grid (≈0.1&nbsp;mm steps) until contact (threshold ≈0.02&nbsp;N), then indent to safe depths per device while adding small x–y displacements. Train a common ResNet‑18 baseline (70/20/10 split) to regress $(P_x, P_y, P_z, F_x, F_y, F_z)$. Report MAE, $R^2$, and sMAPE: $$\text{sMAPE} = \frac{1}{n} \sum_{i=1}^{n} \frac{|y_i - \hat{y}_i|}{\frac{|y_i| + |\hat{y}_i|}{2} + \epsilon} \times 100\%$$</p>
 
       <img style="width: 100%; display: block; margin: 2rem auto;" src="static/images/regression_new-min.png" alt="Calibration error results">
-              <p><b>Brief analysis.</b> ViTacTip minimizes absolute force errors; GelSight variants excel in P<sub>z</sub>; marker‑free GelSightWM is strong in F<sub>z</sub>/P<sub>z</sub> but weaker in F<sub>xy</sub>; MagicTac is competitive in P<sub>xy</sub> yet noisier in F<sub>z</sub>.</p>
+              <p><b>Analysis.</b> ViTacTip minimizes absolute force errors; GelSight variants excel in P<sub>z</sub>; marker‑free GelSightWM is strong in F<sub>z</sub>/P<sub>z</sub> but weaker in F<sub>xy</sub>; MagicTac is competitive in P<sub>xy</sub> yet noisier in F<sub>z</sub>.</p>
               </div>
             </div>
           </div>
@@ -298,7 +298,7 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
           $$\text{SR}(\epsilon) = \frac{1}{N} \sum_{i=1}^{N} \mathbf{1}[|\hat{r}_i - r_i| \leq \epsilon]$$
         </div>
         <p><b>Protocol.</b> 3D‑printed dot/line gratings (≈0.05–2.0&nbsp;mm). 100 presses per sample with randomized yaw. Train classifier; sweep ε.</p>
-        <p><b>Brief analysis.</b> Above ≈5&nbsp;mm, all near‑perfect. At 0.05&nbsp;mm, GelSight/GelSightWM ≈99%, MagicTac ≈98%, ViTacTip ≈80% — reflecting gel stiffness/geometry and effective pixel density.</p>
+        <p><b>Analysis.</b> Above ≈5&nbsp;mm, all near‑perfect. At 0.05&nbsp;mm, GelSight/GelSightWM ≈99%, MagicTac ≈98%, ViTacTip ≈80% — reflecting gel stiffness/geometry and effective pixel density.</p>
     </div>
 
     <!-- Spatial Resolution Test Samples -->
@@ -411,7 +411,7 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
                   <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/78273.png" alt="Sensitivity analysis showing normal compliance and uniformity maps for different VBTS">
                   <p><b>Definition.</b> Normal compliance: $S = \Delta z / F$ (mm/N). Uniformity (0–1): $U = 1 / (1 + \sigma/|\mu|)$ from binned sensitivity means.</p>
                   <p><b>Protocol.</b> Reuse calibration data; bin by (x,y); compute mean S per bin to form maps; aggregate μ, σ for U.</p>
-                  <p><b>Brief analysis.</b> ViTacTip is most sensitive but less uniform (edge‑enhanced S); GelSight/MagicTac are stiffer with higher U.</p>
+                  <p><b>Analysis.</b> ViTacTip is most sensitive but less uniform (edge‑enhanced S); GelSight/MagicTac are stiffer with higher U.</p>
                 </div>
               </div>
             </div>
@@ -440,7 +440,7 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
                     $$R_{\text{spatial},c} = \frac{1}{2} \left[ \text{STD}(\{m^{\text{dist}}_b\}) + \text{STD}(\{m^{\text{depth}}_d\}) \right]$$
                   </div>
                   <p><b>Protocol.</b> Collect a held‑out grid (≈1.6k points) with the same probing pattern; evaluate by bins over normalized radius/depth.</p>
-                  <p><b>Brief analysis.</b> ViTacTip holds force errors flat across the surface; planar gels show edge growth (notably in F<sub>z</sub> and P<sub>xy</sub>). Depth improves P<sub>xy</sub> after shallow contact.</p>
+                  <p><b>Analysis.</b> ViTacTip holds force errors flat across the surface; planar gels show edge growth (notably in F<sub>z</sub> and P<sub>xy</sub>). Depth improves P<sub>xy</sub> after shallow contact.</p>
                 </div>
               </div>
             </div>
@@ -467,7 +467,7 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
                         $$R_{\text{light}} = \frac{|\frac{I_c}{I_o} - 1|}{|\frac{I_c}{I_o} - 1| + |\frac{\text{MAE}_c}{\text{MAE}_o} - 1|}$$
                       </div>
                       <p><b>Protocol.</b> Test under four scenes (diffuse/point/mixed; varying intensity). Compare to training‑light baseline using mean grayscale intensity.</p>
-                      <p><b>Brief analysis.</b> ViTacTip's errors grow under bright point sources; MagicTac's intensities shift less but error variance can rise due to grid interactions with external light.</p>
+                      <p><b>Analysis.</b> ViTacTip's errors grow under bright point sources; MagicTac's intensities shift less but error variance can rise due to grid interactions with external light.</p>
                     </div>
                   </div>
                   <style>
@@ -499,7 +499,7 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
                     $$\text{Rep}_c = \frac{1}{KD} \sum_{k,d} \text{STD}(\hat{c}_{k,d,1..N})$$
                   </div>
                   <p><b>Protocol.</b> K≈100 random points, step 0.1&nbsp;mm to max depth; N=10 repeats per (point,depth).</p>
-                  <p><b>Brief analysis.</b> ViTacTip is most repeatable for forces and competitive for positions; GelSight is strongest in P<sub>z</sub>; MagicTac is intermediate for position and higher variance for force.</p>
+                  <p><b>Analysis.</b> ViTacTip is most repeatable for forces and competitive for positions; GelSight is strongest in P<sub>z</sub>; MagicTac is intermediate for position and higher variance for force.</p>
                 </div>
               </div>
             </div>
