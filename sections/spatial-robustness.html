@@ -1,0 +1,23 @@
+<!-- Spatial Robustness Tab -->
+<div class="tab-item" id="spatial-robustness">
+  <div class="tab-header" onclick="toggleTab('spatial-robustness')">
+    <h2 class="tab-title">Spatial Robustness</h2>
+    <span class="tab-icon">▼</span>
+  </div>
+  <div class="tab-content">
+    <div class="tab-inner">
+      <div class="section-container">
+        <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Spatial Robustness</h2>
+        <div class="hero-body">
+          <img style="width: 100%; display: block; margin: 0 auto; padding-bottom: 30px;" src="static/images/96300.png" alt="Description">
+          <p><b>Definition.</b> Stability of error across location and depth. Compute MAE per radial bin and per depth bin; robustness (lower is better):</p>
+          <div style="text-align:center; margin:1rem 0;">
+            $$R_{\text{spatial},c} = \frac{1}{2} \left[ \text{STD}(\{m^{\text{dist}}_b\}) + \text{STD}(\{m^{\text{depth}}_d\}) \right]$$
+          </div>
+          <p><b>Protocol.</b> Collect a held‑out grid (≈1.6k points) with the same probing pattern; evaluate by bins over normalized radius/depth.</p>
+          <p><b>Brief analysis.</b> ViTacTip holds force errors flat across the surface; planar gels show edge growth (notably in F<sub>z</sub> and P<sub>xy</sub>). Depth improves P<sub>xy</sub> after shallow contact.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

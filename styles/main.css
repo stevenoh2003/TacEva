@@ -1,0 +1,411 @@
+/* Collapsible Tabs Styling */
+.collapsible-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.tab-item {
+  margin-bottom: 0;
+  margin-top: 0;
+  border-radius: 8px;
+  background: #f8f9fa;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.tab-item * {
+  border-radius: inherit;
+}
+
+/* Remove any unwanted borders/outlines from dropdown elements */
+.tab-item,
+.tab-content,
+.tab-inner,
+.tab-inner *:not(img):not(iframe) {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Preserve image and iframe borders if they have them intentionally */
+.tab-inner img,
+.tab-inner iframe {
+  border: initial;
+  outline: initial;
+}
+
+/* Section Headers Styling - Match Abstract and Papers titles */
+.section-header {
+  margin: 3rem 0 2rem 0;
+  text-align: center;
+}
+
+.section-header-title {
+  color: #363636;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+/* First section header has reduced top margin */
+.collapsible-container > .section-header:first-child {
+  margin-top: 1rem;
+}
+
+.tab-header {
+  padding: 1.25rem 1.75rem;
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.tab-header:hover {
+  background: linear-gradient(135deg, #5b6470 0%, #3b4453 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(75, 85, 99, 0.3);
+}
+
+.tab-title {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+.tab-icon {
+  color: white;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+  opacity: 0.9;
+}
+
+.tab-item.active .tab-icon {
+  transform: rotate(180deg);
+}
+
+.tab-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background: #f1f3f4;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.tab-item.active .tab-content {
+  max-height: 5000px;
+}
+
+.tab-inner {
+  padding: 2rem;
+  background: #f1f3f4;
+  border: none;
+  outline: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Normalize spacing inside tabs to ensure consistency */
+.tab-inner .section-container {
+  margin: 0;
+  padding: 0;
+}
+
+.tab-inner .hero-body {
+  padding: 0;
+  margin: 0;
+}
+
+.tab-inner h2.title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-top: 0;
+}
+
+.tab-inner .section-title {
+  margin-bottom: 1.5rem;
+  padding-top: 0 !important;
+}
+
+/* Ensure last elements in tab content have rounded bottom corners */
+.tab-inner > *:last-child,
+.tab-inner .section-container > *:last-child,
+.tab-inner .hero-body > *:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Center content blocks but left-align text inside dropdown tabs */
+.tab-inner .section-container,
+.tab-inner .hero-body {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-inner p,
+.tab-inner .content {
+  text-align: left !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100%;
+  max-width: 700px;
+}
+
+.tab-inner h2,
+.tab-inner h3,
+.tab-inner h4 {
+  text-align: center !important;
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.tab-inner img {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  max-width: 100%;
+}
+
+.tab-inner iframe {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+/* Center mathematical equations */
+.tab-inner mjx-container {
+  text-align: center !important;
+  display: block !important;
+  margin: 1rem auto !important;
+  width: 100%;
+}
+
+/* Ensure paragraphs have good readability */
+.tab-inner p {
+  max-width: 700px;
+  margin: 1rem auto !important;
+  text-align: left !important;
+  line-height: 1.6;
+}
+
+/* Make sure content inside tabs displays properly */
+.tab-inner .section-container,
+.tab-inner .hero-body {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+.tab-inner h2.title {
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .tab-header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .tab-title {
+    font-size: 1.2rem;
+  }
+  
+  .tab-inner {
+    padding: 1rem;
+  }
+}
+
+/* Ensure columns take full width */
+.columns.is-mobile {
+  display: flex;
+  width: 100%;
+}
+
+.column.is-half {
+  flex: 1;
+  min-width: 0; /* Fixes flexbox overflow issues */
+}
+
+/* Remove default Bulma column gaps */
+.columns.is-mobile > .column {
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+/* Remove all borders from hero sections, but exclude MathJax */
+.hero, .section {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.hero > *:not(mjx-container):not(svg), 
+.section > *:not(mjx-container):not(svg) {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Ensure MathJax renders properly */
+mjx-container, mjx-container * {
+  border: initial !important;
+  box-shadow: initial !important;
+  outline: initial !important;
+}
+
+/* Specifically target teaser section */
+.hero.teaser:before,
+.hero.teaser:after,
+.hero.teaser *:before,
+.hero.teaser *:after {
+  display: none !important;
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 768px) {
+  .columns.is-mobile {
+    flex-direction: column;
+  }
+  .column.is-half {
+    width: 100%;
+    padding: 0.5rem 0 !important;
+  }
+  
+  /* Make images full width on mobile */
+  .hero-body img,
+  .section-container img,
+  .container img {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Make text smaller on mobile */
+  body {
+    font-size: 14px !important;
+  }
+  
+  p {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+  
+  .title.is-1 {
+    font-size: 2rem !important;
+  }
+  
+  .title.is-3 {
+    font-size: 1.5rem !important;
+  }
+  
+  .title.is-4 {
+    font-size: 1.25rem !important;
+  }
+  
+  .subtitle {
+    font-size: 1rem !important;
+  }
+  
+  .is-size-5 {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Lightbox styles */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  position: relative;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  z-index: 10000;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Lighting robustness specific styles */
+.text-with-image { 
+  display: flow-root; 
+}
+
+.wrapped-image { 
+  margin-bottom:1rem; 
+  max-width:50%; 
+  height:auto; 
+}
+
+.wrapped-image.right { 
+  float:right; 
+  margin-left:1rem; 
+}
+
+@media (max-width:768px){ 
+  .wrapped-image { 
+    float:none; 
+    max-width:100%; 
+    margin:0 auto 1rem; 
+    display:block; 
+  } 
+} 

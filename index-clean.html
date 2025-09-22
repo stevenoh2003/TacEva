@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>TacEva: A Performance Evaluation Framework for Vision-Based Tactile Sensors</title>
+  <link rel="icon" href="data:,">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/papers-data.js"></script>
+  <script src="static/js/papers-table.js"></script>
+  <script src="static/js/index.js"></script>
+  
+  <!-- MathJax for equation rendering -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        processEscapes: true
+      },
+      startup: {
+        ready() {
+          MathJax.startup.defaultReady();
+          console.log('MathJax is loaded and ready.');
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+  <!-- Floating hamburger menu -->
+  <div id="ham-menu" class="ham-menu">
+    <button id="ham-toggle" class="ham-btn" aria-label="Open menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <div id="ham-panel" class="ham-panel" aria-hidden="true">
+      <a href="#home">Top</a>
+      <a href="#abstract">Abstract</a>
+      <a href="#papers">Survey Table</a>
+      <a href="#BibTeX">BibTeX</a>
+    </div>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">TacEva: A Performance Evaluation Framework for Vision-Based Tactile Sensors</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Author</a><sup>*</sup>,</span>
+                </div>
+
+                <div class="is-size-5 publication-authors">
+                  <span class="author-block">Institution Name<br>Conferance name and year</span>
+                </div>
+
+                <div class="column has-text-centered">
+                  <div class="publication-links">
+                       <!-- Arxiv PDF link -->
+                    <span class="link-block">
+                      <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser video-->
+<section class="hero teaser" style="border: none !important; border-top: none !important; border-bottom: none !important; margin-top: -4rem; padding-top: 1rem; box-shadow: none !important; outline: none !important;">
+  <div class="container is-max-desktop" style="border: none !important; box-shadow: none !important;">
+    <div class="hero-body" style="padding-top: 1rem; border: none !important; box-shadow: none !important;">
+      <img style="width: 80%; display: block; margin: 0 auto; padding-bottom: 30px; border: none !important; box-shadow: none !important; outline: none !important;" src="static/images/311.png" alt="Research framework diagram">
+      <h2 class="subtitle has-text-centered">
+        We propose a comprehensive framework for evaluating vision-based tactile sensors, systematically comparing performance across design properties and sensing performance. In this paper, we showcase our framework against four representative VBTS (ViTacTip, MagicTac, GelSight, GelSightWM).      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because of the high spatial resolution they offer and their relatively low manufacturing costs. However, variations in their sensing mechanisms, structural dimension, and other parameters lead to significant performance disparities between VBTSs currently in use. This makes it challenging to optimize VBTSs for specific tasks, as both the initial choice and subsequent fine-tuning are hindered by the lack of standardized metrics. To address this issue, we present TacEva, a comprehensive evaluation framework for the quantitative analysis of VBTS performance. We define a set of performance metrics that capture and quantify the key characteristics displayed in typical application scenarios. For each metric, we designed an experimental pipeline that provides a structured procedure for performance quantification. We then applied this evaluation approach to multiple VBTSs with distinct sensing mechanisms. The results show that the proposed framework yields a thorough evaluation of each design, and provides quantitative indicators for each performance dimension. This enables researchers to pre-select the most appropriate VBTS on a task by task basis, and also offers performance-guided insights for the optimization of VBTS design.
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Papers Table -->
+<section class="section" id="papers">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Existing VBTS Work and Their Evaluation Methods</h2>
+    <p class="content has-text-centered">Explore papers on vision-based tactile sensors. Use search and filters; click headers to sort.</p>
+    <p class="content has-text-left">For detailed explanation of mechanisms, refer to <a href="https://spj.science.org/doi/epdf/10.34133/cbsystems.0231" target="_blank">this comprehensive survey</a>. VBTSs are categorized according to their underlying sensing principles, including: (i) <strong>Intensity Mapping Method (IMM)</strong>, which infers contact geometry and pressure through spatial variations in reflected light intensity; (ii) <strong>Marker Displacement Method (MDM)</strong>, which detects surface deformation by tracking the displacement of embedded markers under force; and (iii) <strong>Modality Fusion Method (MFM)</strong>, which employs transparent skin to enable multimodal perception.</p>
+
+    <div class="box" style="background-color: #f8f9fa; border-radius: 6px; padding: 1.25rem;">
+      <div class="columns is-variable is-2 is-multiline is-vcentered">
+        <div class="column is-5">
+          <div class="control has-icons-left">
+            <input id="papers-search" class="input" type="text" placeholder="Search all fields..." style="border-radius: 4px;">
+            <span class="icon is-left" style="color: #6c757d;">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+        </div>
+        <div class="column is-3 is-narrow">
+          <div class="select is-fullwidth">
+            <select id="papers-filter-category" style="border-radius: 4px;">
+              <option value="">All Categories</option>
+            </select>
+          </div>
+        </div>
+        <div class="column is-narrow">
+          <button id="papers-clear" class="button is-danger is-light" style="border-radius: 4px;">Clear</button>
+        </div>
+      </div>
+
+      <div class="table-container" style="background-color: #f8f9fa; padding: 1rem; border-radius: 6px;">
+        <table id="papers-table" class="table is-fullwidth is-striped is-hoverable" style="background-color: white;">
+          <thead>
+            <tr>
+              <th data-sort="category" style="cursor:pointer;">Mechanism</th>
+              <th data-sort="title" style="cursor:pointer;">Sensor</th>
+              <th>Paper</th>
+              <th style="width:40%">Performance Metrics / Description</th>
+            </tr>
+          </thead>
+          <tbody id="papers-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="level" style="margin-top: 0.5rem;">
+        <div class="level-left">
+          <div class="field is-grouped">
+            <label class="label" style="margin-right:0.5rem;">Rows</label>
+            <div class="control">
+              <div class="select is-small">
+                <select id="papers-page-size">
+                  <option value="10" selected>10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="level-right">
+          <nav class="pagination is-small" role="navigation" aria-label="pagination">
+            <a class="pagination-previous" id="papers-prev">Previous</a>
+            <a class="pagination-next" id="papers-next">Next</a>
+            <ul class="pagination-list" id="papers-pages"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Headers Only - For Future Content -->
+<section class="section" id="evaluation-sections">
+  <div class="container is-max-desktop">
+    
+    <!-- Standard Performance Section -->
+    <div class="section-header">
+      <h2 class="title is-3">Standard Performance</h2>
+    </div>
+    
+    <p style="text-align: center; color: #666; font-style: italic; margin-bottom: 3rem;">
+      Detailed performance analysis sections will be added here.
+    </p>
+    
+    <!-- Robustness Section -->
+    <div class="section-header">
+      <h2 class="title is-3">Robustness</h2>
+    </div>
+    
+    <p style="text-align: center; color: #666; font-style: italic; margin-bottom: 3rem;">
+      Robustness evaluation metrics for spatial, lighting, and repeatability analysis.
+    </p>
+    
+    <!-- Additional Analysis Section -->
+    <div class="section-header">
+      <h2 class="title is-3">Additional Analysis</h2>
+    </div>
+    
+    <p style="text-align: center; color: #666; font-style: italic;">
+      Inter-sensor variability and hysteresis analysis.
+    </p>
+
+  </div>
+</section>
+
+<section class="is-small section" id="summary">
+  <div class="section-container">
+      <h2 class="title is-3 section-title">Summary of VBTS Evaluation</h2>
+  
+    <div class="hero-body">
+      <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/96293.png" alt="Description">
+      
+      <p style="margin-top: 2rem; text-align: justify;">
+        <b>Selection guide:</b> <b>ViTacTip</b> — best for low‑force, deep/soft contacts and force repeatability; sensitive to lighting and weaker in ultra‑fine resolution. <b>MagicTac</b> — fast, strong planar localization; force estimates noisier; control lighting when possible. <b>GelSight</b> — highest camera resolution and stable depth (P<sub>z</sub>); modest frame rate and edge effects. <b>GelSightWM</b> — practical choice when shear is secondary; robust P<sub>z</sub>/F<sub>z</sub> without markers.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+  <div class="section-container">
+          <h2 class="title">BibTeX</h2>
+    <pre><code>BibTex Code Here</code></pre>
+  </div>
+</section>
+<!--End BibTex citation -->
+
+<footer class="footer">
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+
+        <p>
+          This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+          You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+          Commons Attribution-ShareAlike 4.0 International License</a>.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+</footer>
+
+<style>
+/* Section Headers Styling - Match Abstract and Papers titles */
+.section-header {
+  margin: 3rem 0 2rem 0;
+  text-align: center;
+}
+
+/* First section header has reduced top margin */
+.section-header:first-child {
+  margin-top: 1rem;
+}
+</style>
+
+</body>
+</html> 

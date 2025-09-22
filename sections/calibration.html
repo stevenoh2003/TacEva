@@ -1,0 +1,35 @@
+<!-- Calibration Tab -->
+<div class="tab-item" id="calibration">
+  <div class="tab-header" onclick="toggleTab('calibration')">
+    <h2 class="tab-title">Calibration Process</h2>
+    <span class="tab-icon">▼</span>
+  </div>
+  <div class="tab-content">
+    <div class="tab-inner">
+      <div class="section-container">
+        <h2 class="title is-3 section-title">Calibration Process</h2>
+      
+        <div class="hero-body">
+          <div style="text-align: center; padding-bottom: 10px;">
+            <iframe width="560" height="315" 
+              src="https://www.youtube.com/embed/yXrroyk3Ml0?si=y31lz-hve0UV95UI" 
+              title="YouTube video player" frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+          </div>      
+          <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/calibration_new (1).jpg" alt="VBTS calibration setup diagram">
+
+          <p><b>Definition.</b> Two sequential steps with the sensor on a robot: (1) <i>Surface geometry</i> via first-contact mapping with a 10&nbsp;mm spherical indenter; (2) <i>Force/position mapping</i> from synchronized images and 6‑axis F/T labels across randomized normal + shear stimuli.</p>
+          <p><b>Protocol.</b> Probe the surface on a grid (≈0.1&nbsp;mm steps) until contact (threshold ≈0.02&nbsp;N), then indent to safe depths per device while adding small x–y displacements. Train a common ResNet‑18 baseline (70/20/10 split) to regress $(P_x, P_y, P_z, F_x, F_y, F_z)$. Report MAE, $R^2$, and sMAPE:</p>
+          <div style="text-align:center; margin:1rem 0;">
+            $$\text{sMAPE} = \frac{1}{n} \sum_{i=1}^{n} \frac{|y_i - \hat{y}_i|}{\frac{|y_i| + |\hat{y}_i|}{2} + \epsilon} \times 100\%$$
+          </div>
+
+          <img style="width: 100%; display: block; margin: 2rem auto;" src="static/images/regression_new-min.png" alt="Calibration error results">
+          <p><b>Brief analysis.</b> ViTacTip minimizes absolute force errors; GelSight variants excel in P<sub>z</sub>; marker‑free GelSightWM is strong in F<sub>z</sub>/P<sub>z</sub> but weaker in F<sub>xy</sub>; MagicTac is competitive in P<sub>xy</sub> yet noisier in F<sub>z</sub>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

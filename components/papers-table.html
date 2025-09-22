@@ -1,0 +1,69 @@
+<!-- Interactive Papers Table -->
+<section class="section" id="papers">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">Existing VBTS Work and Their Evaluation Methods</h2>
+    <p class="content has-text-centered">Explore papers on vision-based tactile sensors. Use search and filters; click headers to sort.</p>
+    <p class="content has-text-left">For detailed explanation of mechanisms, refer to <a href="https://spj.science.org/doi/epdf/10.34133/cbsystems.0231" target="_blank">this comprehensive survey</a>. VBTSs are categorized according to their underlying sensing principles, including: (i) <strong>Intensity Mapping Method (IMM)</strong>, which infers contact geometry and pressure through spatial variations in reflected light intensity; (ii) <strong>Marker Displacement Method (MDM)</strong>, which detects surface deformation by tracking the displacement of embedded markers under force; and (iii) <strong>Modality Fusion Method (MFM)</strong>, which employs transparent skin to enable multimodal perception.</p>
+
+    <div class="box" style="background-color: #f8f9fa; border-radius: 6px; padding: 1.25rem;">
+      <div class="columns is-variable is-2 is-multiline is-vcentered">
+        <div class="column is-5">
+          <div class="control has-icons-left">
+            <input id="papers-search" class="input" type="text" placeholder="Search all fields..." style="border-radius: 4px;">
+            <span class="icon is-left" style="color: #6c757d;">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+        </div>
+        <div class="column is-3 is-narrow">
+          <div class="select is-fullwidth">
+            <select id="papers-filter-category" style="border-radius: 4px;">
+              <option value="">All Categories</option>
+            </select>
+          </div>
+        </div>
+        <div class="column is-narrow">
+          <button id="papers-clear" class="button is-danger is-light" style="border-radius: 4px;">Clear</button>
+        </div>
+      </div>
+
+      <div class="table-container" style="background-color: #f8f9fa; padding: 1rem; border-radius: 6px;">
+        <table id="papers-table" class="table is-fullwidth is-striped is-hoverable" style="background-color: white;">
+          <thead>
+            <tr>
+              <th data-sort="category" style="cursor:pointer;">Mechanism</th>
+              <th data-sort="title" style="cursor:pointer;">Sensor</th>
+              <th>Paper</th>
+              <th style="width:40%">Performance Metrics / Description</th>
+            </tr>
+          </thead>
+          <tbody id="papers-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="level" style="margin-top: 0.5rem;">
+        <div class="level-left">
+          <div class="field is-grouped">
+            <label class="label" style="margin-right:0.5rem;">Rows</label>
+            <div class="control">
+              <div class="select is-small">
+                <select id="papers-page-size">
+                  <option value="10" selected>10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="level-right">
+          <nav class="pagination is-small" role="navigation" aria-label="pagination">
+            <a class="pagination-previous" id="papers-prev">Previous</a>
+            <a class="pagination-next" id="papers-next">Next</a>
+            <ul class="pagination-list" id="papers-pages"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

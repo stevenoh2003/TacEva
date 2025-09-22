@@ -1,0 +1,115 @@
+<!-- Spatial Resolution Tab -->
+<div class="tab-item" id="spatial-resolution">
+  <div class="tab-header" onclick="toggleTab('spatial-resolution')">
+    <h2 class="tab-title">Spatial Resolution</h2>
+    <span class="tab-icon">▼</span>
+  </div>
+  <div class="tab-content">
+    <div class="tab-inner">
+      <div class="section-container">
+        <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Spatial Resolution</h2>
+      
+        <div class="hero-body">
+          <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/spatial_res_11 (1).jpg" alt="Description">
+            
+          <p><b>Definition.</b> Ability to distinguish closely spaced features. We report accuracy as a function of tolerance $\epsilon$ using a grating‑classification task:</p>
+          <div style="text-align:center; margin:1rem 0;">
+            $$\text{SR}(\epsilon) = \frac{1}{N} \sum_{i=1}^{N} \mathbf{1}[|\hat{r}_i - r_i| \leq \epsilon]$$
+          </div>
+          <p><b>Protocol.</b> 3D‑printed dot/line gratings (≈0.05–2.0&nbsp;mm). 100 presses per sample with randomized yaw. Train classifier; sweep ε.</p>
+          <p><b>Brief analysis.</b> Above ≈5&nbsp;mm, all near‑perfect. At 0.05&nbsp;mm, GelSight/GelSightWM ≈99%, MagicTac ≈98%, ViTacTip ≈80% — reflecting gel stiffness/geometry and effective pixel density.</p>
+        </div>
+
+        <!-- Spatial Resolution Test Samples -->
+        <div style="padding:2rem 0; background:#ffffff;">
+          <div style="max-width:1200px; margin:0 auto; padding:0 1.5rem;">
+     
+            <!-- Benchmark method description -->
+            <p style="text-align:left; margin-bottom: 2rem;">
+              Evaluation using <b>dot</b> and <b>line</b> grating samples, with spacing from 
+              <b>0&nbsp;mm (flat)</b> to <b>2&nbsp;mm</b>, to determine the minimum resolvable feature size.
+              All four sensors were benchmarked using grating-based samples for spatial resolution assessment.
+            </p>
+
+            <!-- Single row with all 4 CAD models -->
+            <div style="margin-bottom:3rem;">
+              <h3 class="title is-4" style="text-align:left; margin-bottom: 1rem;">
+                Spatial Resolution Test Samples
+              </h3>
+              <p style="text-align:left; margin-bottom: 2rem;">
+               Dot and Line samples from 0.0625 mm to 2 mm spacing - examples shown below
+              </p>
+              
+              <div style="display:flex; gap:16px; align-items:center; justify-content:center;">
+                <!-- 0.125mm dot -->
+                <div style="width:180px; text-align:center;">
+                  <div style="font-size:12px; font-weight:500; color:#4a5568; margin-bottom:8px;">Dot 0.05mm</div>
+                  <div class="sketchfab-embed-wrapper">
+                    <iframe title="Dot_0.125mm" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+                            allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
+                            execution-while-out-of-viewport execution-while-not-rendered web-share
+                            src="https://sketchfab.com/models/fba54cad99e24778b3adc28d437fb15c/embed" 
+                            style="width:100%; height:160px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);"></iframe>
+                  </div>
+                </div>
+
+                <!-- First Arrow (Dot progression) -->
+                <div style="flex:0 0 60px; text-align:center;">
+                  <svg width="50" height="12" viewBox="0 0 50 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="0" y1="6" x2="40" y2="6" stroke="#2563eb" stroke-width="3"/>
+                    <polygon points="50,6 40,1 40,11" fill="#2563eb"/>
+                  </svg>
+                </div>
+
+                <!-- 2mm dot -->
+                <div style="width:180px; text-align:center;">
+                  <div style="font-size:12px; font-weight:500; color:#4a5568; margin-bottom:8px;">Dot 2mm</div>
+                  <div class="sketchfab-embed-wrapper">
+                    <iframe title="Dot_2mm" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+                            allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
+                            execution-while-out-of-viewport execution-while-not-rendered web-share
+                            src="https://sketchfab.com/models/c8a1587af11b4c03b86de0188aee9eab/embed" 
+                            style="width:100%; height:160px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);"></iframe>
+                  </div>
+                </div>
+
+                <!-- 0.0625mm line -->
+                <div style="width:180px; text-align:center;">
+                  <div style="font-size:12px; font-weight:500; color:#4a5568; margin-bottom:8px;">Line 0.05mm</div>
+                  <div class="sketchfab-embed-wrapper">
+                    <iframe title="Line_0.0625mm" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+                            allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
+                            execution-while-out-of-viewport execution-while-not-rendered web-share
+                            src="https://sketchfab.com/models/9fe74abdb9d74355ba0fb556c5d04381/embed" 
+                            style="width:100%; height:160px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);"></iframe>
+                  </div>
+                </div>
+
+                <!-- Second Arrow (Line progression) -->
+                <div style="flex:0 0 60px; text-align:center;">
+                  <svg width="50" height="12" viewBox="0 0 50 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="0" y1="6" x2="40" y2="6" stroke="#2563eb" stroke-width="3"/>
+                    <polygon points="50,6 40,1 40,11" fill="#2563eb"/>
+                  </svg>
+                </div>
+
+                <!-- 2mm line -->
+                <div style="width:180px; text-align:center;">
+                  <div style="font-size:12px; font-weight:500; color:#4a5568; margin-bottom:8px;">Line 2mm</div>
+                  <div class="sketchfab-embed-wrapper">
+                    <iframe title="Line_2mm" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+                            allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
+                            execution-while-out-of-viewport execution-while-not-rendered web-share
+                            src="https://sketchfab.com/models/c7229eaca43843129ad4b120a170b66b/embed" 
+                            style="width:100%; height:160px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);"></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

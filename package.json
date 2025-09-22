@@ -1,0 +1,17 @@
+{
+  "name": "taceval-website",
+  "version": "1.0.0",
+  "description": "Modular HTML build system for TacEval website",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": ["html", "modular", "components", "build"],
+  "author": "TacEval Team",
+  "license": "MIT",
+  "bin": {
+    "taceval-build": "./build.js"
+  }
+} 

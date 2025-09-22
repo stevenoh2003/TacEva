@@ -1,0 +1,28 @@
+<!-- Lighting Robustness Tab -->
+<div class="tab-item" id="lighting-robustness">
+  <div class="tab-header" onclick="toggleTab('lighting-robustness')">
+    <h2 class="tab-title">Lighting Robustness</h2>
+    <span class="tab-icon">▼</span>
+  </div>
+  <div class="tab-content">
+    <div class="tab-inner">
+      <div class="section-container">
+        <h2 style="padding-top: 10px; text-align: center;" class="title is-3">Lighting Robustness</h2>
+        <div class="hero-body">
+          <img style="width: 100%; display: block; margin: 0 auto;" src="static/images/lighting_robustness_new (1).jpg" alt="Description">
+          <div class="lighting-analysis">
+            <div class="text-with-image">
+              <img src="static/images/lightning_robustness_table.png" class="wrapped-image right" alt="Lighting robustness comparison table">
+              <p><b>Definition.</b> Sensitivity of prediction error to illumination changes (transparent/semi‑transparent devices). Example metric:</p>
+              <div style="text-align:center; margin:1rem 0;">
+                $$R_{\text{light}} = \frac{|\frac{I_c}{I_o} - 1|}{|\frac{I_c}{I_o} - 1| + |\frac{\text{MAE}_c}{\text{MAE}_o} - 1|}$$
+              </div>
+              <p><b>Protocol.</b> Test under four scenes (diffuse/point/mixed; varying intensity). Compare to training‑light baseline using mean grayscale intensity.</p>
+              <p><b>Brief analysis.</b> ViTacTip's errors grow under bright point sources; MagicTac's intensities shift less but error variance can rise due to grid interactions with external light.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

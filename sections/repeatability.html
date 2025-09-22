@@ -1,0 +1,23 @@
+<!-- Repeatability Tab -->
+<div class="tab-item" id="repeatability">
+  <div class="tab-header" onclick="toggleTab('repeatability')">
+    <h2 class="tab-title">Repeatability</h2>
+    <span class="tab-icon">▼</span>
+  </div>
+  <div class="tab-content">
+    <div class="tab-inner">
+      <div class="section-container">
+        <h2 class="title is-3 section-title">Repeatability</h2>
+        <div class="hero-body">
+          <img style="width: 90%; display: block; margin: 0 auto;" src="static/images/93723.png" alt="Description">
+          <p><b>Definition.</b> Across $N$ repeats at $K$ points and $D$ depths, per‑channel variability (lower is better):</p>
+          <div style="text-align:center; margin:1rem 0;">
+            $$\text{Rep}_c = \frac{1}{KD} \sum_{k,d} \text{STD}(\hat{c}_{k,d,1..N})$$
+          </div>
+          <p><b>Protocol.</b> K≈100 random points, step 0.1&nbsp;mm to max depth; N=10 repeats per (point,depth).</p>
+          <p><b>Brief analysis.</b> ViTacTip is most repeatable for forces and competitive for positions; GelSight is strongest in P<sub>z</sub>; MagicTac is intermediate for position and higher variance for force.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
