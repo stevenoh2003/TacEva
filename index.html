@@ -71,6 +71,7 @@
     <div id="ham-panel" class="ham-panel" aria-hidden="true">
       <a href="#home">Top</a>
       <a href="#abstract">Abstract</a>
+      <a href="#mechanism-sim">Mechanism Simulator</a>
       <a href="#papers">Existing VBTS Evaluation</a>
       <a href="#evaluation-sections">Standard Performance</a>
       <a href="#evaluation-sections">Robustness</a>
@@ -89,17 +90,17 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="#" target="_blank">Qingzheng Cong</a><sup>1†</sup>,</span>
+                <a href="https://cqz123321.github.io" target="_blank">Qingzheng Cong</a><sup>1†</sup>,</span>
               <span class="author-block">
                 <a href="#" target="_blank">Steven Oh</a><sup>2†</sup>,</span>
               <span class="author-block">
                 <a href="#" target="_blank">Wen Fan</a><sup>1†</sup>,</span>
               <span class="author-block">
-                <a href="#" target="_blank">Shan Luo</a><sup>3</sup>,</span>
+                <a href="https://shanluo.github.io" target="_blank">Shan Luo</a><sup>3</sup>,</span>
               <span class="author-block">
                 <a href="#" target="_blank">Kaspar Althoefer</a><sup>4</sup>,</span>
               <span class="author-block">
-                <a href="#" target="_blank">Dandan Zhang</a><sup>1*</sup></span>
+                <a href="https://www.intelligentrobotics-acrossscales.com" target="_blank">Dandan Zhang</a><sup>1*</sup></span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
@@ -169,75 +170,317 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
   </div>
 </section>
 
-<!-- Interactive Papers Table -->
-<section class="section" id="papers">
+<!-- Sensing mechanism simulator -->
+<section class="section" id="mechanism-sim">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 section-title">Existing VBTS Work and Their Evaluation Methods</h2>
-    <p class="content has-text-centered">Explore papers on vision-based tactile sensors. Use search and filters; click headers to sort.</p>
-    <p class="content has-text-left">For detailed explanation of mechanisms, refer to <a href="https://spj.science.org/doi/epdf/10.34133/cbsystems.0231" target="_blank">this comprehensive survey</a>. VBTSs are categorized according to their underlying sensing principles, including: (i) <strong>Intensity Mapping Method (IMM)</strong>, which infers contact geometry and pressure through spatial variations in reflected light intensity; (ii) <strong>Marker Displacement Method (MDM)</strong>, which detects surface deformation by tracking the displacement of embedded markers under force; and (iii) <strong>Modality Fusion Method (MFM)</strong>, which employs transparent skin to enable multimodal perception.</p>
+    <h2 class="title is-3 section-title">Interactive Sensing Mechanism Simulator</h2>
+    <p class="content has-text-left">
+      This interactive demo illustrates how different VBTS sensing mechanisms respond to a ball pressing a soft surface:
+      IMM (intensity + lighting), MDM (marker displacement), and IMM+MDM (combined).
+    </p>
 
-    <div class="box" style="background-color: #f8f9fa; border-radius: 6px; padding: 1.25rem;">
-      <div class="columns is-variable is-2 is-multiline is-vcentered">
-        <div class="column is-5">
-          <div class="control has-icons-left">
-            <input id="papers-search" class="input" type="text" placeholder="Search all fields..." style="border-radius: 4px;">
-            <span class="icon is-left" style="color: #6c757d;">
-              <i class="fas fa-search"></i>
-            </span>
+    <style>
+      .mech-sim-wrap {
+        border: 1px solid #dce4ef;
+        border-radius: 14px;
+        background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+        padding: 1rem;
+        overscroll-behavior: contain;
+      }
+      .mech-controls {
+        display: grid;
+        grid-template-columns: minmax(260px, 340px);
+        gap: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      .shape-toggle-buttons {
+        display: inline-flex;
+        border: 1px solid #cfdced;
+        border-radius: 999px;
+        padding: 0.2rem;
+        background: #f5f9ff;
+      }
+      .shape-toggle-btn {
+        border: none;
+        background: transparent;
+        color: #4a617b;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .shape-toggle-btn.is-active {
+        background: #2f578f;
+        color: #fff;
+      }
+      .mech-control label {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #29415f;
+        margin-bottom: 0.3rem;
+      }
+      .mech-control .value {
+        font-weight: 600;
+        color: #486280;
+        margin-left: 0.35rem;
+      }
+      .mech-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.9rem;
+      }
+      .mech-card {
+        border: 1px solid #d8e3f2;
+        border-radius: 12px;
+        background: #fff;
+        padding: 0.7rem;
+      }
+      .mech-card h3 {
+        margin: 0 0 0.45rem;
+        font-size: 1rem;
+        color: #172b43;
+      }
+      .mech-subtitle {
+        margin: 0.3rem 0;
+        font-size: 0.74rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: #587392;
+      }
+      .mech-caption {
+        margin-top: 0.45rem;
+        font-size: 0.8rem;
+        line-height: 1.35;
+        color: #4a617b;
+      }
+      .mech-canvas {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid #e2e8f1;
+        background: #f7fafc;
+        display: block;
+        touch-action: none;
+      }
+      @media (max-width: 980px) {
+        .mech-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 768px) {
+        .mech-grid {
+          grid-template-columns: 1fr;
+        }
+        .mech-controls {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <div class="mech-sim-wrap">
+      <div class="mech-controls">
+        <div class="mech-control">
+          <label>Indenter Shape</label>
+          <div class="shape-toggle-buttons" role="group" aria-label="Indenter Shape">
+            <button id="sim-shape-circle" type="button" class="shape-toggle-btn is-active">Circle</button>
+            <button id="sim-shape-triangle" type="button" class="shape-toggle-btn">Triangle</button>
           </div>
-        </div>
-        <div class="column is-3 is-narrow">
-          <div class="select is-fullwidth">
-            <select id="papers-filter-category" style="border-radius: 4px;">
-              <option value="">All Categories</option>
-            </select>
-          </div>
-        </div>
-        <div class="column is-narrow">
-          <button id="papers-clear" class="button is-danger is-light" style="border-radius: 4px;">Clear</button>
         </div>
       </div>
+      <p class="content is-small has-text-left" style="margin-top:-0.4rem; margin-bottom:0.8rem; color:#4b6380;">
+        Drag the ball in any side-view panel.
+      </p>
 
-      <div class="table-container" style="background-color: #f8f9fa; padding: 1rem; border-radius: 6px;">
-        <table id="papers-table" class="table is-fullwidth is-striped is-hoverable" style="background-color: white;">
-          <thead>
-            <tr>
-              <th data-sort="category" style="cursor:pointer;">Mechanism</th>
-              <th data-sort="title" style="cursor:pointer;">Sensor</th>
-              <th>Paper</th>
-              <th style="width:40%">Performance Metrics / Description</th>
-            </tr>
-          </thead>
-          <tbody id="papers-tbody"></tbody>
-        </table>
-      </div>
-
-      <div class="level" style="margin-top: 0.5rem;">
-        <div class="level-left">
-          <div class="field is-grouped">
-            <label class="label" style="margin-right:0.5rem;">Rows</label>
-            <div class="control">
-              <div class="select is-small">
-                <select id="papers-page-size">
-                  <option value="10" selected>10</option>
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                </select>
-              </div>
-            </div>
-          </div>
+      <div class="mech-grid">
+        <div class="mech-card">
+          <h3>IMM</h3>
+          <p class="mech-subtitle">Side View</p>
+          <canvas id="sim-imm-side" class="mech-canvas" width="360" height="220" aria-label="IMM side view simulation"></canvas>
+          <p class="mech-subtitle">Camera View</p>
+          <canvas id="sim-imm-cam" class="mech-canvas" width="360" height="180" aria-label="IMM camera view simulation"></canvas>
+          <p class="mech-caption">Side view: ball presses gel, producing contact shadow + photometric intensity changes.</p>
         </div>
-        <div class="level-right">
-          <nav class="pagination is-small" role="navigation" aria-label="pagination">
-            <a class="pagination-previous" id="papers-prev">Previous</a>
-            <a class="pagination-next" id="papers-next">Next</a>
-            <ul class="pagination-list" id="papers-pages"></ul>
-          </nav>
+        <div class="mech-card">
+          <h3>MDM</h3>
+          <p class="mech-subtitle">Side View</p>
+          <canvas id="sim-mdm-side" class="mech-canvas" width="360" height="220" aria-label="MDM side view simulation"></canvas>
+          <p class="mech-subtitle">Camera View</p>
+          <canvas id="sim-mdm-cam" class="mech-canvas" width="360" height="180" aria-label="MDM camera view simulation"></canvas>
+          <p class="mech-caption">Side view markers spread laterally and compress vertically as deformation grows.</p>
+        </div>
+        <div class="mech-card">
+          <h3>IMM + MDM</h3>
+          <p class="mech-subtitle">Side View</p>
+          <canvas id="sim-hybrid-side" class="mech-canvas" width="360" height="220" aria-label="IMM plus MDM side view simulation"></canvas>
+          <p class="mech-subtitle">Camera View</p>
+          <canvas id="sim-hybrid-cam" class="mech-canvas" width="360" height="180" aria-label="IMM plus MDM camera view simulation"></canvas>
+          <p class="mech-caption">Hybrid side view overlays IMM lighting behavior with MDM marker displacement.</p>
+        </div>
+        <div class="mech-card">
+          <h3>MDM + MFM</h3>
+          <p class="mech-subtitle">Side View</p>
+          <canvas id="sim-mdm-mfm-side" class="mech-canvas" width="360" height="220" aria-label="MDM plus MFM side view simulation"></canvas>
+          <p class="mech-subtitle">Camera View</p>
+          <canvas id="sim-mdm-mfm-cam" class="mech-canvas" width="360" height="180" aria-label="MDM plus MFM camera view simulation"></canvas>
+          <p class="mech-caption">Transparent-surface effect: background remains visible while marker displacement is tracked.</p>
         </div>
       </div>
     </div>
   </div>
-  </section>
+</section>
+
+<!-- Appendix Tables -->
+<section class="section" id="papers">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title">VBTS Evaluation Landscape (Appendix A1/A2)</h2>
+    <p class="content has-text-left">
+      This table summarizes reported metric coverage across VBTS works from the appendix (Table A1), grouped by the sensing-mechanism taxonomy in ref. [8]:
+      <strong>IMM</strong>, <strong>MDM</strong>, and <strong>MFM</strong> (including hybrids).
+      Application-level interpretation (Table A2) is shown later below the main evaluation sections.
+    </p>
+
+    <style>
+      .taceva-table-block {
+        background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        border: 1px solid #dde8f5;
+        border-radius: 14px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+      .taceva-table-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: #1b2a41;
+      }
+      .taceva-table-wrapper {
+        overflow-x: auto;
+        border: 1px solid #dce4ef;
+        border-radius: 10px;
+        background: #ffffff;
+      }
+      .taceva-matrix {
+        min-width: 1150px;
+        margin-bottom: 0 !important;
+      }
+      .taceva-matrix thead th {
+        position: sticky;
+        top: 0;
+        background: #f2f6fb !important;
+        color: #1c2b39;
+        border-bottom: 2px solid #d5e0ed !important;
+        font-size: 0.85rem;
+      }
+      .taceva-matrix td, .taceva-matrix th {
+        font-size: 0.84rem;
+        vertical-align: top;
+      }
+      .mech-cell {
+        font-weight: 700;
+        color: #17324d;
+        background: #f7fbff;
+        white-space: nowrap;
+      }
+      .status {
+        display: inline-block;
+        min-width: 28px;
+        text-align: center;
+        padding: 0.15rem 0.35rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+      .yes { background: #e8f8ee; color: #1e824c; }
+      .no { background: #fdecec; color: #b23a3a; }
+      .partial { background: #fff6df; color: #a67600; }
+      .legend {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 0.8rem;
+        flex-wrap: wrap;
+      }
+      .legend .tag {
+        border-radius: 999px;
+        font-weight: 600;
+      }
+      @media (max-width: 768px) {
+        .taceva-table-block { padding: 0.9rem; }
+      }
+    </style>
+
+    <div class="taceva-table-block">
+      <h3 class="taceva-table-title">Table A1: Reported Evaluation Metrics Across VBTS Works</h3>
+      <div class="legend">
+        <span class="tag is-success is-light">Y = reported</span>
+        <span class="tag is-danger is-light">N = not reported</span>
+        <span class="tag is-warning is-light">P = partial/indirect</span>
+      </div>
+      <div class="taceva-table-wrapper">
+        <table class="table is-fullwidth is-striped is-hoverable taceva-matrix">
+          <thead>
+            <tr>
+              <th>Mechanism</th>
+              <th>Work / Sensor</th>
+              <th>Res</th>
+              <th>FOV</th>
+              <th>Gel</th>
+              <th>FPS</th>
+              <th>Calib</th>
+              <th>SR</th>
+              <th>S</th>
+              <th>Rep</th>
+              <th>R<sub>spatial</sub></th>
+              <th>R<sub>light</sub></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="mech-cell">IMM</td><td>DIGIT [29]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">IMM</td><td>DTact [49]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td></tr>
+            <tr><td class="mech-cell">IMM</td><td>OmniTact [30]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">IMM</td><td>Minsight [50]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">IMM</td><td>ThinTact [32]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status partial">P</span></td><td><span class="status no">N</span></td><td><span class="status partial">P</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">IMM</td><td>InSight [51]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status partial">P</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">IMM</td><td>GelTip [34]</td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status partial">P</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+
+            <tr><td class="mech-cell">MDM</td><td>GelForce [28]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">MDM</td><td>ChromaTouch [52]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">MDM</td><td>TacTip [10]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status partial">P</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">MDM</td><td>Deltac [53]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status partial">P</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">MDM</td><td>Tac3D [54]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+
+            <tr><td class="mech-cell">IMM+MDM</td><td>GelSight [3]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">IMM+MDM</td><td>GelSlim [39]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td></tr>
+            <tr><td class="mech-cell">IMM+MDM</td><td>UV-Tac [55]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status partial">P</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status partial">P</span></td><td><span class="status yes">Y</span></td></tr>
+            <tr><td class="mech-cell">IMM+MDM</td><td>DenseTac 2.0 [31]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+
+            <tr><td class="mech-cell">IMM+MFM</td><td>VisTac [56]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status partial">P</span></td><td><span class="status partial">P</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">IMM+MFM</td><td>Finger-STS [57]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">IMM+MFM</td><td>TIRgel [58]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td></tr>
+            <tr><td class="mech-cell">IMM+MFM</td><td>HiVTac [59]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td></tr>
+
+            <tr><td class="mech-cell">MDM+MFM</td><td>ViTacTip [11]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td></tr>
+            <tr><td class="mech-cell">MDM+MFM</td><td>FingerVision [12]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status partial">P</span></td><td><span class="status no">N</span></td><td><span class="status partial">P</span></td><td><span class="status partial">P</span></td></tr>
+            <tr><td class="mech-cell">MDM+MFM</td><td>SpecTac [60]</td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">MDM+MFM</td><td>VPTS [61]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+
+            <tr><td class="mech-cell">IMM+MDM+MFM</td><td>MagicTac [41, 62]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td></tr>
+            <tr><td class="mech-cell">IMM+MDM+MFM</td><td>F-Touch [9]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td></tr>
+
+            <tr><td class="mech-cell">Evaluation / Review</td><td>PBR-Design [36]</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td></tr>
+            <tr><td class="mech-cell">Evaluation / Review</td><td>VT-Review [63]</td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">Evaluation / Review</td><td>Eval [37]</td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td></tr>
+            <tr><td class="mech-cell">Evaluation / Review</td><td>Sparsh [38]</td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status yes">Y</span></td><td><span class="status no">N</span></td><td><span class="status no">N</span></td><td><span class="status partial">P</span></td><td><span class="status partial">P</span></td></tr>
+            <tr><td class="mech-cell">Evaluation / Review</td><td>TacEva (Ours)</td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td><td><span class="status yes">Y</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- Collapsible Sections Container -->
   <section class="section" id="evaluation-sections">
@@ -945,6 +1188,66 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
 
 
 
+<section class="section" id="application-table">
+  <div class="container is-max-desktop">
+    <div class="taceva-table-block">
+      <h3 class="taceva-table-title">Table A2: VBTS Sensors and Evaluation by Application-Level Interpretation</h3>
+      <div class="taceva-table-wrapper">
+        <table class="table is-fullwidth is-striped is-hoverable taceva-matrix">
+          <thead>
+            <tr>
+              <th>Mechanism</th>
+              <th>Sensor / Paper</th>
+              <th>Geometry-Focused Evaluations</th>
+              <th>Force-Focused Evaluations</th>
+              <th>Robustness-Critical Evaluations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="mech-cell">IMM</td><td>DIGIT [29]</td><td>Pose control; contact and pose tracking</td><td>-</td><td>-</td></tr>
+            <tr><td class="mech-cell">IMM</td><td>DTact [49]</td><td>Contact reconstruction; pose estimation; object recognition</td><td>-</td><td>Illumination robustness</td></tr>
+            <tr><td class="mech-cell">IMM</td><td>OmniTact [30]</td><td>Connector insertion; contact-angle estimation</td><td>-</td><td>-</td></tr>
+            <tr><td class="mech-cell">IMM</td><td>Minsight [50]</td><td>Tactile servoing; lump detection</td><td>Force estimation</td><td>-</td></tr>
+            <tr><td class="mech-cell">IMM</td><td>ThinTact [32]</td><td>Delicate grasping; insertion; sliding-pose manipulation</td><td>Gentle force regulation</td><td>-</td></tr>
+            <tr><td class="mech-cell">IMM</td><td>InSight [51]</td><td>Shape; orientation; posture sensing</td><td>Multi-contact force mapping</td><td>-</td></tr>
+            <tr><td class="mech-cell">IMM</td><td>GelTip [34]</td><td>Contact localization</td><td>-</td><td>-</td></tr>
+
+            <tr><td class="mech-cell">MDM</td><td>GelForce [64]</td><td>-</td><td>Traction-field estimation</td><td>-</td></tr>
+            <tr><td class="mech-cell">MDM</td><td>ChromaTouch [52]</td><td>Curvature estimation (3D displacement field)</td><td>-</td><td>-</td></tr>
+            <tr><td class="mech-cell">MDM</td><td>TacTip [10]</td><td>In-hand rolling/reorientation; edge following; localization; JND discrimination</td><td>-</td><td>-</td></tr>
+            <tr><td class="mech-cell">MDM</td><td>DelTact [54]</td><td>Contact reconstruction</td><td>Force mapping</td><td>-</td></tr>
+            <tr><td class="mech-cell">MDM</td><td>Tac3D [53]</td><td>Spatial resolution; contact reconstruction</td><td>Force estimation; friction-coefficient estimation; real-time mapping</td><td>-</td></tr>
+
+            <tr><td class="mech-cell">IMM+MDM</td><td>GelSight [3]</td><td>Contact reconstruction; texture recognition; USB insertion</td><td>Force/stiffness estimation; slip detection</td><td>-</td></tr>
+            <tr><td class="mech-cell">IMM+MDM</td><td>GelSlim [33,39,65]</td><td>Pose and shape reconstruction; insertion</td><td>Force/torque estimation; force-controlled manipulation; slip detection</td><td>Durability (&gt;3000 grasps)</td></tr>
+            <tr><td class="mech-cell">IMM+MDM</td><td>DenseTac 2.0 [31,44]</td><td>Dense contact reconstruction</td><td>Force/torque estimation</td><td>-</td></tr>
+            <tr><td class="mech-cell">IMM+MDM</td><td>UV-Tac [55]</td><td>Contact localization; alignment</td><td>Normal and shear force mapping</td><td>UV/white-light switching</td></tr>
+
+            <tr><td class="mech-cell">IMM+MFM</td><td>VisTac [56]</td><td>Contact reconstruction/localization; pose estimation; insertion</td><td>-</td><td>-</td></tr>
+            <tr><td class="mech-cell">IMM+MFM</td><td>Finger-STS [57]</td><td>Object/texture recognition</td><td>Dense slip detection; bead-maze tasks</td><td>-</td></tr>
+            <tr><td class="mech-cell">IMM+MFM</td><td>TIRgel [58]</td><td>Object classification</td><td>-</td><td>Ambient-brightness resistance</td></tr>
+            <tr><td class="mech-cell">IMM+MFM</td><td>HiVTac [59]</td><td>Pose estimation; deformation analysis</td><td>Force estimation; grasping</td><td>-</td></tr>
+
+            <tr><td class="mech-cell">MDM+MFM</td><td>ViTacTip [11]</td><td>Grating classification; pose estimation; localization</td><td>Force estimation</td><td>Lighting robustness (GAN-based)</td></tr>
+            <tr><td class="mech-cell">MDM+MFM</td><td>FingerVision [12,66-68]</td><td>Surface reconstruction; deformation field</td><td>Force estimation; slip/vibration detection</td><td>Grasp-stability tests (shaking)</td></tr>
+            <tr><td class="mech-cell">MDM+MFM</td><td>SpecTac [60]</td><td>3D triangulation; feature matching</td><td>Force estimation</td><td>SIFT feature detection</td></tr>
+            <tr><td class="mech-cell">MDM+MFM</td><td>VPTS [61]</td><td>Contact reconstruction; proximity exploration</td><td>-</td><td>Vision-proximity-tactile fusion</td></tr>
+
+            <tr><td class="mech-cell">IMM+MDM+MFM</td><td>MagicTac [41,62]</td><td>Grating classification; pose estimation; contact localization</td><td>Force estimation</td><td>Lighting robustness; manufacture error; wear and tear</td></tr>
+            <tr><td class="mech-cell">IMM+MDM+MFM</td><td>F-Touch [9]</td><td>Object/texture recognition</td><td>Force/torque estimation</td><td>-</td></tr>
+
+            <tr><td class="mech-cell">Evaluation / Review</td><td>PBR-Design [36]</td><td>Contact reconstruction (embossed text, grasping); VBTS design</td><td>-</td><td>Design robustness (optical stability)</td></tr>
+            <tr><td class="mech-cell">Evaluation / Review</td><td>VT-Review [63]</td><td>3D visuo-tactile contact reconstruction</td><td>Force estimation</td><td>Robustness across textures and marker layouts</td></tr>
+            <tr><td class="mech-cell">Evaluation / Review</td><td>Eval [37]</td><td>Edge detection; contact reconstruction</td><td>Minimum detectable force; sensitivity mapping; slip and frequency tests</td><td>Temperature/material dependency; real-world grasping</td></tr>
+            <tr><td class="mech-cell">Evaluation / Review</td><td>Sparsh [38]</td><td>Pose tracking; texture recognition</td><td>Force estimation/mapping; slip-accumulation; bead-maze tasks; grasp stability</td><td>-</td></tr>
+            <tr><td class="mech-cell">Evaluation / Review</td><td>TacEva (Ours)</td><td>Spatial resolution; contact localization</td><td>Force estimation; force sensitivity mapping</td><td>Repeatability; spatial and lighting robustness</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="is-small section" id="summary">
   <div class="section-container">
       <h2 class="title is-3 section-title">Summary of VBTS Evaluation</h2>
@@ -973,7 +1276,15 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
   <section class="section" id="BibTeX">
     <div class="section-container">
             <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@article{taceva,
+  title   = {TacEva: A Performance Evaluation Framework for Vision-Based Tactile Sensors},
+  author  = {Cong, Qingzheng and Oh, Steven and Fan, Wen and Luo, Shan and Althoefer, Kaspar and Zhang, Dandan},
+  journal = {Advanced Intelligent Systems},
+  year    = {2026},
+  pages   = {e202501179},
+  doi     = {10.1002/aisy.202501179},
+  url     = {https://doi.org/10.1002/aisy.202501179}
+}</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
@@ -1056,6 +1367,501 @@ Vision-based tactile sensors (VBTSs) are widely used in robotic tasks, because o
     document.querySelectorAll('.tab-item').forEach(item => {
       item.classList.remove('active');
     });
+  });
+
+  // IMM / MDM / IMM+MDM mechanism simulator
+  document.addEventListener('DOMContentLoaded', function() {
+    const immSide = document.getElementById('sim-imm-side');
+    const mdmSide = document.getElementById('sim-mdm-side');
+    const hybridSide = document.getElementById('sim-hybrid-side');
+    const mdmMfmSide = document.getElementById('sim-mdm-mfm-side');
+    const immCam = document.getElementById('sim-imm-cam');
+    const mdmCam = document.getElementById('sim-mdm-cam');
+    const hybridCam = document.getElementById('sim-hybrid-cam');
+    const mdmMfmCam = document.getElementById('sim-mdm-mfm-cam');
+    if (!immSide || !mdmSide || !hybridSide || !mdmMfmSide || !immCam || !mdmCam || !hybridCam || !mdmMfmCam) return;
+
+    const shapeCircleBtn = document.getElementById('sim-shape-circle');
+    const shapeTriangleBtn = document.getElementById('sim-shape-triangle');
+    const SIM_COMPLIANCE = 0.85;
+    const SIM_LIGHT_DEG = 35;
+    const SIM_MARKER_GAIN = 1.0;
+
+    const sideCtx = {
+      imm: immSide.getContext('2d'),
+      mdm: mdmSide.getContext('2d'),
+      hybrid: hybridSide.getContext('2d'),
+      mdm_mfm: mdmMfmSide.getContext('2d')
+    };
+    const camCtx = {
+      imm: immCam.getContext('2d'),
+      mdm: mdmCam.getContext('2d'),
+      hybrid: hybridCam.getContext('2d'),
+      mdm_mfm: mdmMfmCam.getContext('2d')
+    };
+
+    const w = immSide.width;
+    const h = immSide.height;
+    const cw = immCam.width;
+    const ch = immCam.height;
+    const ballR = 22;
+    const surfaceY = 86;
+    const gelThickness = 78;
+    const baseY = surfaceY + gelThickness;
+    const sigma = 42;
+    let ball = { x: w * 0.5, y: 48 };
+    let dragging = false;
+    let needsRender = true;
+    let shearState = 0;
+    let lastBallX = ball.x;
+    let currentShape = 'circle';
+
+    function gaussian(dx, spread) {
+      return Math.exp(-(dx * dx) / (2 * spread * spread));
+    }
+
+    function contactState() {
+      const compliance = SIM_COMPLIANCE;
+      const maxPen = 36 * compliance;
+      const rawPen = Math.max(0, ball.y + ballR - surfaceY);
+      const pen = Math.min(rawPen, maxPen);
+      return { pen, compliance };
+    }
+
+    function deformedTop(x, pen) {
+      const dx = x - ball.x;
+      const normal = pen * gaussian(dx, sigma);
+      const shearTail = -0.22 * pen * shearState * (dx / sigma) * gaussian(dx, sigma * 1.55);
+      return surfaceY + normal + shearTail;
+    }
+
+    function deformedBottom(x, pen) {
+      const dx = x - ball.x;
+      const base = 0.32 * pen * gaussian(dx, sigma * 1.1);
+      const shearTail = -0.10 * pen * shearState * (dx / sigma) * gaussian(dx, sigma * 1.7);
+      return baseY + base + shearTail;
+    }
+
+    function drawFrame(ctx) {
+      ctx.clearRect(0, 0, w, h);
+      const bg = ctx.createLinearGradient(0, 0, 0, h);
+      bg.addColorStop(0, '#f8fbff');
+      bg.addColorStop(1, '#eef4fb');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    function indenterShape() {
+      return currentShape;
+    }
+
+    function trianglePath(ctx, cx, cy, r) {
+      // Base-down triangle (flat side at bottom).
+      ctx.moveTo(cx - r * 0.95, cy + r * 0.72);
+      ctx.lineTo(cx + r * 0.95, cy + r * 0.72);
+      ctx.lineTo(cx, cy - r * 0.92);
+      ctx.closePath();
+    }
+
+    function triangleInfluence(dx, dy, s) {
+      const x = dx / s;
+      const y = dy / s;
+      const yTop = -1.0;
+      const yBase = 0.75;
+      const t = (y - yTop) / (yBase - yTop);
+      const halfW = 0.95 * Math.max(0, Math.min(1, t));
+      const inside = y >= yTop && y <= yBase && Math.abs(x) <= halfW;
+      if (inside) return 1.0;
+      const dxOut = Math.max(0, Math.abs(x) - halfW);
+      const dyOut = y < yTop ? (yTop - y) : (y > yBase ? (y - yBase) : 0);
+      const d = Math.sqrt(dxOut * dxOut + dyOut * dyOut);
+      return Math.exp(-6 * d * d);
+    }
+
+    function drawBall(ctx) {
+      const shape = indenterShape();
+      const grad = ctx.createRadialGradient(ball.x - 8, ball.y - 8, 2, ball.x, ball.y, ballR + 6);
+      grad.addColorStop(0, '#fff5b8');
+      grad.addColorStop(0.55, '#f4d86e');
+      grad.addColorStop(1, '#caa842');
+      if (shape === 'triangle') {
+        ctx.beginPath();
+        trianglePath(ctx, ball.x, ball.y, ballR);
+      } else {
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ballR, 0, Math.PI * 2);
+      }
+      ctx.fillStyle = grad;
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(120,95,30,0.65)';
+      ctx.lineWidth = 1.4;
+      ctx.stroke();
+    }
+
+    function drawElastomerShape(ctx, pen) {
+      const lightDeg = SIM_LIGHT_DEG;
+      const ld = lightDeg * Math.PI / 180;
+      void ld;
+
+      ctx.beginPath();
+      ctx.moveTo(0, deformedTop(0, pen));
+      for (let x = 1; x <= w; x += 1) ctx.lineTo(x, deformedTop(x, pen));
+      for (let x = w; x >= 0; x -= 1) ctx.lineTo(x, deformedBottom(x, pen));
+      ctx.closePath();
+
+      const gelGrad = ctx.createLinearGradient(0, surfaceY - 10, 0, baseY + 18);
+      gelGrad.addColorStop(0, '#d6e4f1');
+      gelGrad.addColorStop(1, '#b4c8de');
+      ctx.fillStyle = gelGrad;
+      ctx.fill();
+
+      ctx.strokeStyle = '#6284a7';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(0, deformedTop(0, pen));
+      for (let x = 1; x <= w; x += 1) ctx.lineTo(x, deformedTop(x, pen));
+      ctx.stroke();
+
+      ctx.strokeStyle = '#7f9cb8';
+      ctx.beginPath();
+      ctx.moveTo(0, deformedBottom(0, pen));
+      for (let x = 1; x <= w; x += 1) ctx.lineTo(x, deformedBottom(x, pen));
+      ctx.stroke();
+    }
+
+    function drawMarkers(ctx, pen, hybrid) {
+      const markerGain = SIM_MARKER_GAIN;
+      const dxStep = 24;
+      // Side-view marker track: single marker row only.
+      const y = surfaceY + gelThickness * 0.48;
+
+      for (let x = 12; x <= w - 12; x += dxStep) {
+        const influence = gaussian(x - ball.x, sigma * 1.1);
+        const spread = markerGain * pen * influence;
+        const dir = x >= ball.x ? 1 : -1;
+        let ux = x + dir * spread * 0.6;
+        ux = Math.max(10, Math.min(w - 10, ux));
+        let uy = y + spread * 0.46;
+
+        // Keep markers inside gel boundaries under all compression levels.
+        const yTop = deformedTop(ux, pen) + 3;
+        const yBottom = deformedBottom(ux, pen) - 3;
+        uy = Math.max(yTop, Math.min(yBottom, uy));
+
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(ux, uy);
+        ctx.strokeStyle = hybrid ? 'rgba(115, 141, 177, 0.55)' : 'rgba(115, 141, 177, 0.45)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(ux, uy, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = hybrid ? '#2f578f' : '#2f578f';
+        ctx.fill();
+      }
+    }
+
+    function drawSideScene(ctx, mode) {
+      const c = contactState();
+      drawFrame(ctx);
+      drawElastomerShape(ctx, c.pen);
+      if (mode === 'mdm' || mode === 'mdm_mfm') drawMarkers(ctx, c.pen, false);
+      if (mode === 'hybrid') drawMarkers(ctx, c.pen, true);
+      // Unified side-view style across modes; only marker behavior differs.
+      drawBall(ctx);
+    }
+
+    function drawCameraFrame(ctx) {
+      ctx.clearRect(0, 0, cw, ch);
+      const g = ctx.createLinearGradient(0, 0, 0, ch);
+      g.addColorStop(0, '#f6fbff');
+      g.addColorStop(1, '#edf5fc');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, cw, ch);
+    }
+
+    function cameraCenter() {
+      // Reflect global FOV shift as ball moves closer/farther in side view.
+      const cx = (ball.x / w) * cw;
+      const yNorm = Math.max(0, Math.min(1, (ball.y - (ballR + 4)) / (h - 2 * ballR - 12)));
+      const cy = ch * (0.43 + 0.22 * yNorm);
+      return { cx, cy };
+    }
+
+    function drawTransparentBackground(ctx) {
+      // Clean background for transparent-surface effect (no grid pattern).
+      const g = ctx.createLinearGradient(0, 0, 0, ch);
+      g.addColorStop(0, '#e7f0f9');
+      g.addColorStop(1, '#d8e6f4');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, cw, ch);
+    }
+
+    function drawCameraBaseTint(ctx) {
+      // Keep a stable IMM-like color tone visible even before contact.
+      const tint = ctx.createLinearGradient(0, 0, cw, ch);
+      tint.addColorStop(0, 'rgba(120, 154, 196, 0.16)');
+      tint.addColorStop(1, 'rgba(94, 135, 182, 0.10)');
+      ctx.fillStyle = tint;
+      ctx.fillRect(0, 0, cw, ch);
+    }
+
+    function drawCameraIMM(ctx, c) {
+      if (c.pen <= 0.2) return;
+      const cc = cameraCenter();
+      const cx = cc.cx;
+      const cy = cc.cy;
+      const shape = indenterShape();
+      const lightDeg = SIM_LIGHT_DEG;
+      const ld = lightDeg * Math.PI / 180;
+      const lx = Math.cos(ld);
+      const ly = Math.sin(ld);
+      const sig = 10 + c.pen * 0.85;
+      const amp = Math.min(1, c.pen / 28);
+
+      // Localized contact shading only; keep global camera background stable.
+      const shadowX = cx - lx * (2 + amp * 5);
+      const shadowY = cy - ly * (2 + amp * 5);
+      const shadow = ctx.createRadialGradient(shadowX, shadowY, sig * 0.2, cx, cy, sig * 2.0);
+      shadow.addColorStop(0, 'rgba(34,56,84,' + (0.24 * amp).toFixed(3) + ')');
+      shadow.addColorStop(1, 'rgba(34,56,84,0)');
+      ctx.fillStyle = shadow;
+      ctx.beginPath();
+      if (shape === 'triangle') {
+        trianglePath(ctx, cx, cy, sig * 1.95);
+      } else {
+        ctx.ellipse(
+          cx,
+          cy,
+          sig * 1.9,
+          sig * 1.58,
+          0,
+          0,
+          Math.PI * 2
+        );
+      }
+      ctx.fill();
+
+      const hx = cx + lx * (3 + amp * 8);
+      const hy = cy + ly * (3 + amp * 8);
+      const highlight = ctx.createRadialGradient(hx, hy, sig * 0.08, hx, hy, sig * 0.95);
+      highlight.addColorStop(0, 'rgba(255,255,255,' + (0.42 * amp).toFixed(3) + ')');
+      highlight.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = highlight;
+      ctx.beginPath();
+      if (shape === 'triangle') {
+        trianglePath(ctx, cx, cy, sig * 1.05);
+      } else {
+        ctx.arc(cx, cy, sig * 1.05, 0, Math.PI * 2);
+      }
+      ctx.fill();
+    }
+
+    function drawCameraMarkers(ctx, c, hybrid) {
+      const cc = cameraCenter();
+      const cx = cc.cx;
+      const cy = cc.cy;
+      const shape = indenterShape();
+      const markerGain = SIM_MARKER_GAIN;
+      const spacing = 16;
+      const spreadSigma = 20 + c.pen * 0.9;
+
+      for (let y = 10; y < ch - 8; y += spacing) {
+        for (let x = 10; x < cw - 8; x += spacing) {
+          const dx = x - cx;
+          const dy = y - cy;
+          const dist = Math.sqrt(dx * dx + dy * dy) + 1e-6;
+          const influence = shape === 'triangle'
+            ? triangleInfluence(dx, dy, spreadSigma)
+            : Math.exp(-(dx * dx + dy * dy) / (2 * spreadSigma * spreadSigma));
+          const disp = markerGain * c.pen * influence * 0.65;
+          const ux = x + (dx / dist) * disp;
+          const uy = y + (dy / dist) * disp + (shape === 'triangle' ? 0.08 * disp : 0);
+
+          if (disp > 0.08) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(ux, uy);
+            ctx.strokeStyle = hybrid ? 'rgba(115, 141, 177, 0.5)' : 'rgba(115, 141, 177, 0.45)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          ctx.beginPath();
+          ctx.arc(ux, uy, 2, 0, Math.PI * 2);
+          ctx.fillStyle = hybrid ? '#2f578f' : '#2f578f';
+          ctx.fill();
+        }
+      }
+    }
+
+    function drawCameraMfmCue(ctx, c) {
+      // 2D color-change cue for transparent MFM camera view.
+      const cc = cameraCenter();
+      const cx = cc.cx;
+      const cy = cc.cy;
+      // Keep cue size close to max even away from contact; only slight growth on press.
+      const maxPen = 36 * c.compliance;
+      const pressRatio = maxPen > 0 ? Math.max(0, Math.min(1, c.pen / maxPen)) : 0;
+      const rMax = 10 + maxPen * 1.55;
+      const r = rMax * (0.88 + 0.12 * pressRatio);
+      const shape = indenterShape();
+
+      const glow = ctx.createRadialGradient(cx, cy, r * 0.15, cx, cy, r * 2.1);
+      glow.addColorStop(0, 'rgba(244, 216, 110,0.18)');
+      glow.addColorStop(0.55, 'rgba(244, 216, 110,0.11)');
+      glow.addColorStop(1, 'rgba(244, 216, 110,0)');
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      if (shape === 'triangle') {
+        trianglePath(ctx, cx, cy, r * 1.25);
+      } else {
+        ctx.arc(cx, cy, r * 1.35, 0, Math.PI * 2);
+      }
+      ctx.fill();
+
+      // Stable yellow circle body visible even with little contact.
+      ctx.beginPath();
+      if (shape === 'triangle') {
+        trianglePath(ctx, cx, cy, r);
+      } else {
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      }
+      ctx.fillStyle = 'rgba(244, 216, 110, 0.18)';
+      ctx.fill();
+    }
+
+    function drawCameraScene(ctx, mode) {
+      const c = contactState();
+      if (mode === 'mdm_mfm') {
+        drawTransparentBackground(ctx);
+        ctx.fillStyle = 'rgba(170, 205, 238, 0.13)';
+        ctx.fillRect(0, 0, cw, ch);
+      } else {
+        drawCameraFrame(ctx);
+      }
+      if (mode === 'mdm_mfm') drawCameraMfmCue(ctx, c);
+      if (mode === 'imm' || mode === 'hybrid') drawCameraBaseTint(ctx);
+      if ((mode === 'imm' || mode === 'hybrid') && c.pen > 0.2) drawCameraIMM(ctx, c);
+      if (mode === 'mdm' || mode === 'hybrid' || mode === 'mdm_mfm') drawCameraMarkers(ctx, c, mode === 'hybrid');
+
+      if (c.pen <= 0.2) return;
+      const cc = cameraCenter();
+      const cx = cc.cx;
+      const cy = cc.cy;
+      const r = 10 + c.pen * 1.55;
+
+      if (mode !== 'mdm' && mode !== 'mdm_mfm') {
+        // Sharper projected contact/shadow to make ball-contact footprint easier to read.
+        const coreShadow = ctx.createRadialGradient(cx, cy, r * 0.2, cx, cy, r * 1.55);
+        coreShadow.addColorStop(0, 'rgba(34,53,78,0.28)');
+        coreShadow.addColorStop(0.6, 'rgba(34,53,78,0.10)');
+        coreShadow.addColorStop(1, 'rgba(34,53,78,0)');
+        ctx.fillStyle = coreShadow;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r * 1.65, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Outer rim intentionally removed per request.
+    }
+
+    function clampBall() {
+      const c = contactState();
+      ball.x = Math.max(ballR + 4, Math.min(w - ballR - 4, ball.x));
+      const minY = ballR + 4;
+      const maxY = Math.min(h - ballR - 8, surfaceY - ballR + (36 * c.compliance));
+      ball.y = Math.max(minY, Math.min(maxY, ball.y));
+
+      // Enforce geometric consistency: once touching, ball center follows the deformed surface.
+      if (ball.y + ballR >= surfaceY) {
+        const desiredPen = Math.min(36 * c.compliance, Math.max(0, ball.y + ballR - surfaceY));
+        ball.y = surfaceY - ballR + desiredPen;
+      }
+
+      // Shear memory follows horizontal dragging, then relaxes when motion stops.
+      const dxMove = ball.x - lastBallX;
+      const targetShear = Math.max(-1, Math.min(1, dxMove / 8));
+      shearState = 0.82 * shearState + 0.18 * targetShear;
+      if (!dragging) shearState *= 0.94;
+      lastBallX = ball.x;
+    }
+
+    function updateReadout() {
+      // Reserved for future UI readouts.
+    }
+
+    function renderAll() {
+      clampBall();
+      updateReadout();
+      drawSideScene(sideCtx.imm, 'imm');
+      drawSideScene(sideCtx.mdm, 'mdm');
+      drawSideScene(sideCtx.hybrid, 'hybrid');
+      drawSideScene(sideCtx.mdm_mfm, 'mdm_mfm');
+      drawCameraScene(camCtx.imm, 'imm');
+      drawCameraScene(camCtx.mdm, 'mdm');
+      drawCameraScene(camCtx.hybrid, 'hybrid');
+      drawCameraScene(camCtx.mdm_mfm, 'mdm_mfm');
+    }
+
+    function pointerToCanvasPos(canvas, evt) {
+      const rect = canvas.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * (canvas.width / rect.width);
+      const py = (evt.clientY - rect.top) * (canvas.height / rect.height);
+      return { x: px, y: py };
+    }
+
+    function bindDrag(canvas) {
+      canvas.style.cursor = 'grab';
+      canvas.addEventListener('pointerdown', function(evt) {
+        evt.preventDefault();
+        canvas.setPointerCapture(evt.pointerId);
+        dragging = true;
+        canvas.style.cursor = 'grabbing';
+        const p = pointerToCanvasPos(canvas, evt);
+        ball.x = p.x;
+        ball.y = p.y;
+        needsRender = true;
+      });
+      canvas.addEventListener('pointermove', function(evt) {
+        if (!dragging) return;
+        evt.preventDefault();
+        const p = pointerToCanvasPos(canvas, evt);
+        ball.x = p.x;
+        ball.y = p.y;
+        needsRender = true;
+      });
+      canvas.addEventListener('pointerup', function(evt) {
+        dragging = false;
+        canvas.releasePointerCapture(evt.pointerId);
+        canvas.style.cursor = 'grab';
+      });
+      canvas.addEventListener('pointerleave', function() {
+        if (!dragging) canvas.style.cursor = 'grab';
+      });
+    }
+
+    [immSide, mdmSide, hybridSide, mdmMfmSide].forEach(bindDrag);
+
+    function setShape(shape) {
+      currentShape = shape === 'triangle' ? 'triangle' : 'circle';
+      if (shapeCircleBtn) shapeCircleBtn.classList.toggle('is-active', currentShape === 'circle');
+      if (shapeTriangleBtn) shapeTriangleBtn.classList.toggle('is-active', currentShape === 'triangle');
+      needsRender = true;
+    }
+    if (shapeCircleBtn) shapeCircleBtn.addEventListener('click', function() { setShape('circle'); });
+    if (shapeTriangleBtn) shapeTriangleBtn.addEventListener('click', function() { setShape('triangle'); });
+    setShape('circle');
+
+    function loop() {
+      if (needsRender) {
+        renderAll();
+        needsRender = false;
+      }
+      requestAnimationFrame(loop);
+    }
+    renderAll();
+    requestAnimationFrame(loop);
   });
   </script>
 </body>
